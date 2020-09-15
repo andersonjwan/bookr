@@ -1,2 +1,5 @@
 # Build Path(s)
 /build/*
+
+# Temporary UI Files
+*.ui~
