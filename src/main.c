@@ -5,7 +5,7 @@ activate(GtkApplication *app,
          gpointer        data)
 {
   GtkBuilder *builder;
-  builder = gtk_builder_new_from_file("/home/andersonjwan/Projects/bookr/src/ui/main.ui");
+  builder = gtk_builder_new_from_file("/usr/share/bookr/ui/main.ui");
 
   GtkWidget *window;
   window = GTK_WIDGET(gtk_builder_get_object(GTK_BUILDER(builder),
