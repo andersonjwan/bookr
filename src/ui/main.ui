@@ -14,10 +14,21 @@
     <property name="icon_name">accessories-dictionary-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
+  <object class="GtkImage" id="bookr-main-image-button-edit">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-edit-symbolic</property>
+  </object>
   <object class="GtkImage" id="bookr-main-image-button-menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">open-menu-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
+  <object class="GtkImage" id="bookr-main-image-button-search">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">edit-find-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkApplicationWindow" id="bookr-main-window">
@@ -114,6 +125,29 @@
           <packing>
             <property name="pack_type">end</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="bookr-main-header-button-search">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="image">bookr-main-image-button-search</property>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="bookr-main-header-button-edit">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="image">bookr-main-image-button-edit</property>
+          </object>
+          <packing>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>
