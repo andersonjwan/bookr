@@ -1,13 +1,19 @@
 #include "main.h"
 
+
+
 static void
 activate(GtkApplication *app,
          gpointer        data)
 {
   GtkBuilder *builder;
-  builder = gtk_builder_new_from_file("/usr/share/bookr/ui/main.ui");
+  builder = gtk_builder_new_from_file("/usr/share/bookr/gui/bookr.ui");
 
-  GtkWidget *window;
+  GtkWindow *window;
+  if(window == NULL) {
+    window = GTK_WINDOW(gtk_builder_get_object(GTK_BUILDER(builder),
+                                               "bookr-main-window"));
+  }
   window = GTK_WIDGET(gtk_builder_get_object(GTK_BUILDER(builder),
                                              "bookr-main-window"));
 
@@ -16,16 +22,16 @@ activate(GtkApplication *app,
   gtk_widget_show_all(GTK_WIDGET(window));
 }
 
-int
-main(int argc, char **argv)
+gint
+main(gint argc, gchar **argv)
 {
-  GtkApplication *app;
-  int status;
+  g_autoptr (GtkApplication) app;
+  int ret;
 
   app = gtk_application_new("com.github.andersonjwan.bookr", G_APPLICATION_FLAGS_NONE);
   g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
 
-  status = g_application_run(G_APPLICATION(app), argc, argv);
+  ret = g_application_run(G_APPLICATION(app), argc, argv);
   g_object_unref(app);
 
   return status;
