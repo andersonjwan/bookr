@@ -174,7 +174,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSeparator" id="bookr-main-popover-menu-box-separator">
+          <object class="GtkSeparator">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
           </object>
