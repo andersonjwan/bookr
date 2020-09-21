@@ -29,19 +29,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="bookr-book-box-main">
+          <object class="GtkBox" id="bookr-book-add-box-main">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">5</property>
             <child>
-              <object class="GtkBox" id="bookr-book-labels-box">
+              <object class="GtkBox" id="bookr-book-add-labels-box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <property name="homogeneous">True</property>
                 <child>
-                  <object class="GtkLabel" id="bookr-book-labels-box-title-label">
+                  <object class="GtkLabel" id="bookr-book-add-labels-box-title-label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Title</property>
@@ -54,7 +54,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="bookr-book-labels-box-author-label">
+                  <object class="GtkLabel" id="bookr-book-add-labels-box-author-label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Author</property>
@@ -67,7 +67,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="bookr-book-labels-box-publisher-label">
+                  <object class="GtkLabel" id="bookr-book-add-labels-box-publisher-label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Publisher</property>
@@ -80,7 +80,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="bookr-book-labels-box-year-label">
+                  <object class="GtkLabel" id="bookr-book-add-labels-box-year-label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Year Published</property>
@@ -93,7 +93,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="bookr-book-labels-box-edition-label">
+                  <object class="GtkLabel" id="bookr-book-add-labels-box-edition-label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Edition</property>
@@ -106,7 +106,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="bookr-book-labels-box-language-label">
+                  <object class="GtkLabel" id="bookr-book-add-labels-box-language-label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Language</property>
@@ -119,7 +119,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="bookr-book-labels-box-length-label">
+                  <object class="GtkLabel" id="bookr-book-add-labels-box-length-label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Print Length</property>
@@ -132,7 +132,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="bookr-book-labels-box-cover-label">
+                  <object class="GtkLabel" id="bookr-book-add-labels-box-cover-label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Cover</property>
@@ -152,13 +152,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="bookr-book-box-entries">
+              <object class="GtkBox" id="bookr-book-add-box-entries">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
-                  <object class="GtkEntry" id="bookr-book-entries-box-title-entry">
+                  <object class="GtkEntry" id="bookr-book-add-entries-box-title-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -169,7 +169,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="bookr-book-entries-box-author-entry">
+                  <object class="GtkEntry" id="bookr-book-add-entries-box-author-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -180,7 +180,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="bookr-book-entries-box-publisher-entry">
+                  <object class="GtkEntry" id="bookr-book-add-entries-box-publisher-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -191,7 +191,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="bookr-book-entries-box-year-entry">
+                  <object class="GtkEntry" id="bookr-book-add-entries-box-year-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -202,7 +202,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="bookr-book-entries-box-edition-entry">
+                  <object class="GtkEntry" id="bookr-book-add-entries-box-edition-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -213,7 +213,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="bookr-book-entries-box-language-entry">
+                  <object class="GtkEntry" id="bookr-book-add-entries-box-language-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -224,7 +224,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="bookr-book-entries-box-length-entry">
+                  <object class="GtkEntry" id="bookr-book-add-entries-box-length-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                   </object>
@@ -235,7 +235,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="bookr-book-entries-box-cover-entry">
+                  <object class="GtkEntry" id="bookr-book-add-entries-box-cover-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="primary_icon_name">document-open-symbolic</property>
@@ -263,12 +263,12 @@
       </object>
     </child>
     <child type="titlebar">
-      <object class="GtkHeaderBar" id="bookr-book-header">
+      <object class="GtkHeaderBar" id="bookr-book-add-header">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="title" translatable="yes">Add Book</property>
         <child>
-          <object class="GtkButton" id="bookr-book-header-cancel-button">
+          <object class="GtkButton" id="bookr-book-add-header-cancel-button">
             <property name="label" translatable="yes">Cancel</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -276,7 +276,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="bookr-book-header-confirm-button">
+          <object class="GtkButton" id="bookr-book-add-header-confirm-button">
             <property name="label" translatable="yes">Confirm</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
