@@ -5,5 +5,6 @@
 
 /* forward declarations */
 void activate(GtkApplication *, gpointer);
+GtkWidget * get_widget(GtkBuilder *, gchar *);
 
 #endif
