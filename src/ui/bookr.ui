@@ -31,7 +31,7 @@
     <property name="icon_name">edit-find-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
-  <object class="GtkApplicationWindow" id="bookr-main-window">
+  <object class="GtkApplicationWindow" id="bookr-window-main">
     <property name="can_focus">False</property>
     <property name="border_width">10</property>
     <property name="default_width">640</property>
