@@ -170,6 +170,19 @@
                     <property name="position">9</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkLabel" id="bookr-book-add-labels-label-isbn">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">ISBN</property>
+                    <property name="xalign">1</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">10</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -299,6 +312,18 @@
                     <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">9</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="bookr-book-add-entries-entry-isbn">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="input_purpose">number</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">10</property>
                   </packing>
                 </child>
               </object>
