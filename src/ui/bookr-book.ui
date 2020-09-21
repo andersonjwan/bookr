@@ -172,6 +172,7 @@
                   <object class="GtkEntry" id="bookr-book-add-entries-box-author-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="input_purpose">name</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -183,6 +184,7 @@
                   <object class="GtkEntry" id="bookr-book-add-entries-box-publisher-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="input_purpose">name</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -194,6 +196,7 @@
                   <object class="GtkEntry" id="bookr-book-add-entries-box-year-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="input_purpose">number</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -205,6 +208,7 @@
                   <object class="GtkEntry" id="bookr-book-add-entries-box-edition-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="input_purpose">number</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -227,6 +231,7 @@
                   <object class="GtkEntry" id="bookr-book-add-entries-box-length-entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="input_purpose">number</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
