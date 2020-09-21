@@ -10,22 +10,17 @@ activate(GtkApplication *app,
   builder = gtk_builder_new_from_file("/usr/share/bookr/gui/bookr.ui");
 
   GtkWindow *window;
-  if(window == NULL) {
-    window = GTK_WINDOW(gtk_builder_get_object(GTK_BUILDER(builder),
+  window = GTK_WINDOW(gtk_builder_get_object(GTK_BUILDER(builder),
                                                "bookr-main-window"));
-  }
-  window = GTK_WIDGET(gtk_builder_get_object(GTK_BUILDER(builder),
-                                             "bookr-main-window"));
 
   gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(window));
-
   gtk_widget_show_all(GTK_WIDGET(window));
 }
 
 gint
 main(gint argc, gchar **argv)
 {
-  g_autoptr (GtkApplication) app;
+  GtkApplication *app;
   int ret;
 
   app = gtk_application_new("com.github.andersonjwan.bookr", G_APPLICATION_FLAGS_NONE);
@@ -34,5 +29,5 @@ main(gint argc, gchar **argv)
   ret = g_application_run(G_APPLICATION(app), argc, argv);
   g_object_unref(app);
 
-  return status;
+  return ret;
 }
