@@ -2,7 +2,6 @@
 #define MAIN_H
 
 #include <gtk/gtk.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "builder.h"
 
 #endif
