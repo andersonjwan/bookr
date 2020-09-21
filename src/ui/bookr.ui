@@ -56,7 +56,7 @@
           </object>
           <packing>
             <property name="name">logs</property>
-            <property name="title" translatable="yes">Logs</property>
+            <property name="title" translatable="yes">Log</property>
           </packing>
         </child>
         <child>
@@ -76,7 +76,7 @@
           </object>
           <packing>
             <property name="name">books</property>
-            <property name="title" translatable="yes">Books</property>
+            <property name="title" translatable="yes">Book</property>
             <property name="position">1</property>
           </packing>
         </child>
