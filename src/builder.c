@@ -17,10 +17,38 @@ activate(GtkApplication *app,
 }
 
 GtkWidget *
-get_widget(GtkBuilder *builder, gchar *identifier)
+get_widget(GtkBuilder *tmp, gchar *identifier)
 {
   GObject *object;
-  object = gtk_builder_get_object(GTK_BUILDER(builder), identifier);
+  object = gtk_builder_get_object(GTK_BUILDER(tmp), identifier);
 
   return GTK_WIDGET(object);
+}
+
+GtkWindow *
+get_dialog(GtkBuilder *tmp, gchar *identifier)
+{
+  GtkWidget *dialog, *parent;
+  dialog = get_widget(tmp, identifier);
+  parent = get_widget(builder, "bookr-window-main");
+
+  /* set dialog properties */
+  gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
+
+  return GTK_WINDOW(dialog);
+}
+
+void
+show_add(GtkButton *button,
+         gpointer   data)
+{
+  GtkWidget *stack;
+  stack = get_widget(builder, "bookr-main-stack");
+
+  const gchar *visible;
+  visible = gtk_stack_get_visible_child_name(GTK_STACK(stack));
+
+  if(strcmp(visible, "books") == 0) {
+    show_book_add();
+  }
 }
