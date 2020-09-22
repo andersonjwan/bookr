@@ -28,6 +28,7 @@ struct Book {
 /* forward declarations */
 void new_book(GtkButton *, gpointer);
 static struct Book * create_book(GtkWidget *);
+static void free_book(void);
 
 static void create_book_file(void);
 static void print_book(void);

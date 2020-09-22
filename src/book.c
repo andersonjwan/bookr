@@ -11,7 +11,8 @@ new_book(GtkButton *button,
     active = create_book(GTK_WIDGET(data));
   }
   else {
-    // TODO
+    free_book();
+    active = create_book(GTK_WIDGET(data));
   }
 
   create_book_file();
@@ -83,6 +84,28 @@ create_book(GtkWidget *container)
   new->log = NULL;
 
   return new;
+}
+
+static void
+free_book(void)
+{
+  /* free allocated memory */
+  g_free((gchar *) active->title);
+  g_free((gchar *) active->author);
+  g_free((gchar *) active->publisher);
+  g_free((gchar *) active->language);
+  g_free((gchar *) active->ISBN);
+  g_free((gchar *) active->cover);
+  g_free((gchar *) active->calendar);
+
+  /* free logs */
+  if(active->log) {
+    // TODO
+  }
+
+  g_free((struct Book *) active);
+  active = NULL;
+  return;
 }
 
 static void
