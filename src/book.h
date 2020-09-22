@@ -2,6 +2,7 @@
 #define BOOK_H
 
 #include "main.h"
+#include "log.h"
 
 struct Book {
   /* book information */
@@ -24,4 +25,8 @@ struct Book {
   struct Log *log;      // book logs
 };
 
+/* forward declarations */
+void new_book(GtkButton *, gpointer);
+static struct Book * create_book(GtkWidget *);
+void print_book(void);
 #endif
