@@ -120,7 +120,7 @@ create_book_file(void)
   size = strlen(prefix) + strlen(title) + 1;
 
   gchar path[size];
-  snprintf(path, strlen(prefix) + 1, "%s", prefix);
+  strcpy(path, prefix);
 
   gchar name[(38 + strlen(title))];
   snprintf(name, (strlen(title) + 38),
@@ -132,6 +132,45 @@ create_book_file(void)
   FILE *file;
   file = fopen(path, "w");
 
+  fclose(file);
+}
+
+void
+select_book(GtkModelButton *button,
+            gpointer        data)
+{
+  gchar *title;
+  title = (gchar *) data;
+
+  select_book_file(title);
+}
+
+static void
+select_book_file(gchar *title)
+{
+  /* create path */
+  gchar *prefix = getenv("HOME");
+
+  gint size;
+  size = strlen(prefix) + strlen(title) + 1;
+
+  gchar path[size];
+  strcpy(path, prefix);
+
+  gchar name[(38 + strlen(title))];
+  snprintf(name, (strlen(title) + 38),
+           "/.local/share/bookr/data/Book - %s.data", title);
+
+  strncat(path, name, strlen(name));
+
+  printf("Path: %s\n", path);
+
+  FILE *file;
+  file = fopen(path, "r");
+
+  if(!file) {
+    fprintf(stderr, "Unable to open\n");
+  }
   fclose(file);
 }
 

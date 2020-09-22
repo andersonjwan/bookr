@@ -3,6 +3,7 @@
 
 #include "main.h"
 
+#include "book.h"
 #include "book-add.h"
 #include "book-edit.h"
 
