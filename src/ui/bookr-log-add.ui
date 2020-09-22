@@ -2,6 +2,7 @@
 <!-- Generated with glade 3.36.0 -->
 <interface>
   <requires lib="gtk+" version="3.22"/>
+  <object class="GtkTextBuffer" id="bookr-log-add-notes-text-buffer"/>
   <object class="GtkDialog" id="bookr-log-add-dialog">
     <property name="can_focus">False</property>
     <property name="border_width">10</property>
@@ -426,6 +427,7 @@
                         <property name="right_margin">5</property>
                         <property name="top_margin">5</property>
                         <property name="bottom_margin">5</property>
+                        <property name="buffer">bookr-log-add-notes-text-buffer</property>
                       </object>
                     </child>
                   </object>
