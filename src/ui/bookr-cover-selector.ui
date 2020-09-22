@@ -71,6 +71,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <signal name="clicked" handler="get_cover_selector" swapped="no"/>
             <style>
               <class name="suggested-action"/>
             </style>

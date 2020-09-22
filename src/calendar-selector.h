@@ -7,4 +7,6 @@
 void show_calendar_selector(GtkEntry  *, gpointer);
 void hide_calendar_selector(GtkButton *, gpointer);
 
+void get_calendar_selector(GtkButton  *, gpointer);
+
 #endif
