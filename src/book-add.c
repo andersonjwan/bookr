@@ -21,4 +21,24 @@ hide_book_add(GtkButton *button,
 {
   remove_dialog(GTK_WINDOW(dialog));
   gtk_widget_hide(GTK_WIDGET(dialog));
+
+  clear_book_add();
+}
+
+static void
+clear_book_add(void)
+{
+  GtkWidget *container;
+  container = get_widget(builder, "bookr-book-add-box-entries");
+
+  GList *child;
+  child = gtk_container_get_children(GTK_CONTAINER(container));
+
+  /* clear entry */
+  while(child != NULL) {
+    gtk_entry_set_text(GTK_ENTRY(child->data), "");
+
+    /* next entry */
+    child = child->next;
+  }
 }

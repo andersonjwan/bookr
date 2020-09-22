@@ -7,4 +7,6 @@
 void show_log_add(void);
 void hide_log_add(GtkButton *, gpointer);
 
+static void clear_log_add(void);
+
 #endif
