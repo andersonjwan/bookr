@@ -5,6 +5,10 @@
   <object class="GtkDialog" id="bookr-book-add-dialog">
     <property name="can_focus">False</property>
     <property name="border_width">10</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="default_width">540</property>
+    <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -354,6 +358,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <signal name="clicked" handler="hide_book_add" swapped="no"/>
           </object>
         </child>
         <child>
