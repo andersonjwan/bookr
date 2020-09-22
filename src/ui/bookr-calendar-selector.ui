@@ -2,6 +2,11 @@
 <!-- Generated with glade 3.36.0 -->
 <interface>
   <requires lib="gtk+" version="3.22"/>
+  <object class="GtkFileFilter" id="bookr-calendar-selector-filter">
+    <mime-types>
+      <mime-type>text/calendar</mime-type>
+    </mime-types>
+  </object>
   <object class="GtkDialog" id="bookr-calendar-selector-dialog">
     <property name="can_focus">False</property>
     <property name="modal">True</property>
@@ -33,7 +38,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="create_folders">False</property>
-            <property name="filter">bookr-cover-selector-filter</property>
+            <property name="filter">bookr-calendar-selector-filter</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -55,6 +60,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <signal name="clicked" handler="hide_calendar_selector" swapped="no"/>
           </object>
         </child>
         <child>
@@ -74,10 +80,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkFileFilter" id="bookr-calendar-selector-filter">
-    <mime-types>
-      <mime-type>text/calendar</mime-type>
-    </mime-types>
   </object>
 </interface>
