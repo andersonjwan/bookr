@@ -1,15 +1,18 @@
 #include "builder.h"
 
-static GtkBuilder *builder;
-static GtkWindow  *window;
+static GtkApplication *bookr;
+static GtkBuilder     *builder;
 
 void
 activate(GtkApplication *app,
          gpointer        data)
 {
+  bookr = GTK_APPLICATION(app);
+
   builder = gtk_builder_new_from_file("/usr/share/bookr/gui/bookr.ui");
   gtk_builder_connect_signals(GTK_BUILDER(builder), data);
 
+  GtkWindow *window;
   window = GTK_WINDOW(get_widget(builder, "bookr-window-main"));
 
   gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(window));
@@ -17,20 +20,20 @@ activate(GtkApplication *app,
 }
 
 GtkWidget *
-get_widget(GtkBuilder *tmp, gchar *identifier)
+get_widget(GtkBuilder *builder, gchar *identifier)
 {
   GObject *object;
-  object = gtk_builder_get_object(GTK_BUILDER(tmp), identifier);
+  object = gtk_builder_get_object(GTK_BUILDER(builder), identifier);
 
   return GTK_WIDGET(object);
 }
 
 GtkWindow *
-get_dialog(GtkBuilder *tmp, gchar *identifier)
+get_dialog(GtkBuilder *builder, gchar *identifier)
 {
   GtkWindow *dialog, *parent;
-  dialog = GTK_WINDOW(get_widget(tmp, identifier));
-  parent = window;
+  dialog = GTK_WINDOW(get_widget(builder, identifier));
+  parent = gtk_application_get_active_window(GTK_APPLICATION(bookr));
 
   /* set dialog properties */
   gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
