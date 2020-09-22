@@ -1,6 +1,7 @@
 #include "builder.h"
 
 static GtkBuilder *builder;
+static GtkWindow  *window;
 
 void
 activate(GtkApplication *app,
@@ -9,7 +10,6 @@ activate(GtkApplication *app,
   builder = gtk_builder_new_from_file("/usr/share/bookr/gui/bookr.ui");
   gtk_builder_connect_signals(GTK_BUILDER(builder), data);
 
-  GtkWindow *window;
   window = GTK_WINDOW(get_widget(builder, "bookr-window-main"));
 
   gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(window));
@@ -28,9 +28,9 @@ get_widget(GtkBuilder *tmp, gchar *identifier)
 GtkWindow *
 get_dialog(GtkBuilder *tmp, gchar *identifier)
 {
-  GtkWidget *dialog, *parent;
-  dialog = get_widget(tmp, identifier);
-  parent = get_widget(builder, "bookr-window-main");
+  GtkWindow *dialog, *parent;
+  dialog = GTK_WINDOW(get_widget(tmp, identifier));
+  parent = window;
 
   /* set dialog properties */
   gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
