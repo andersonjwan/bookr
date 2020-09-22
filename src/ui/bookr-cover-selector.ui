@@ -2,15 +2,16 @@
 <!-- Generated with glade 3.36.0 -->
 <interface>
   <requires lib="gtk+" version="3.22"/>
-  <object class="GtkFileFilter" id="bookr-file-selector-filter">
+  <object class="GtkFileFilter" id="bookr-cover-selector-filter">
     <mime-types>
       <mime-type>image/png</mime-type>
       <mime-type>image/jpeg</mime-type>
     </mime-types>
   </object>
-  <object class="GtkDialog" id="bookr-file-selector-dialog">
+  <object class="GtkDialog" id="bookr-cover-selector-dialog">
     <property name="can_focus">False</property>
-    <property name="type_hint">dialog</property>
+    <property name="modal">True</property>
+    <property name="type_hint">normal</property>
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="can_focus">False</property>
@@ -34,11 +35,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkFileChooserWidget" id="bookr-file-selector-dialog-file-chooser">
+          <object class="GtkFileChooserWidget" id="bookr-cover-selector-dialog-file-chooser">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="create_folders">False</property>
-            <property name="filter">bookr-file-selector-filter</property>
+            <property name="filter">bookr-cover-selector-filter</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -49,21 +50,22 @@
       </object>
     </child>
     <child type="titlebar">
-      <object class="GtkHeaderBar" id="bookr-file-selector-header">
+      <object class="GtkHeaderBar" id="bookr-cover-selector-header">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="title" translatable="yes">Select Cover</property>
         <property name="spacing">5</property>
         <child>
-          <object class="GtkButton" id="bookr-file-selector-header-button-cancel">
+          <object class="GtkButton" id="bookr-cover-selector-header-button-cancel">
             <property name="label" translatable="yes">Cancel</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <signal name="clicked" handler="hide_cover_selector" swapped="no"/>
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="bookr-file-selector-header-button-confirm">
+          <object class="GtkButton" id="bookr-cover-selector-header-button-confirm">
             <property name="label" translatable="yes">Confirm</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
