@@ -12,6 +12,7 @@
     <property name="can_focus">False</property>
     <property name="modal">True</property>
     <property name="type_hint">normal</property>
+    <signal name="close" handler="hide_cover_selector" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="can_focus">False</property>

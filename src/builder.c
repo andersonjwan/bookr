@@ -1,16 +1,20 @@
 #include "builder.h"
 
-static GtkApplication *bookr;
-static GtkBuilder     *builder;
+static GtkApplication *bookr   = NULL;
+static GtkBuilder     *builder = NULL;
 
 void
 activate(GtkApplication *app,
          gpointer        data)
 {
-  bookr = GTK_APPLICATION(app);
+  if(!bookr) {
+    bookr = GTK_APPLICATION(app);
+  }
 
-  builder = gtk_builder_new_from_file("/usr/share/bookr/gui/bookr.ui");
-  gtk_builder_connect_signals(GTK_BUILDER(builder), data);
+  if(!builder) {
+    builder = gtk_builder_new_from_file("/usr/share/bookr/gui/bookr.ui");
+    gtk_builder_connect_signals(GTK_BUILDER(builder), data);
+  }
 
   GtkWindow *window;
   window = GTK_WINDOW(get_widget(builder, "bookr-window-main"));

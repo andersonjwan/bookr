@@ -1,13 +1,15 @@
 #include "book-add.h"
 
-static GtkBuilder *builder;
-static GtkWindow  *dialog;
+static GtkBuilder *builder = NULL;
+static GtkWindow  *dialog  = NULL;
 
 void
 show_book_add(void)
 {
-  builder = gtk_builder_new_from_file("/usr/share/bookr/gui/bookr-book-add.ui");
-  gtk_builder_connect_signals(GTK_BUILDER(builder), NULL);
+  if(!builder) {
+    builder = gtk_builder_new_from_file("/usr/share/bookr/gui/bookr-book-add.ui");
+    gtk_builder_connect_signals(GTK_BUILDER(builder), NULL);
+  }
 
   dialog = get_dialog(builder, "bookr-book-add-dialog");
   gtk_widget_show_all(GTK_WIDGET(dialog));
@@ -18,4 +20,6 @@ hide_book_add(GtkButton *button,
               gpointer   data)
 {
   destroy_dialog(dialog);
+  g_object_unref(G_OBJECT(builder));
+  builder = NULL;
 }
