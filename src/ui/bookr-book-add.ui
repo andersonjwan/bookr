@@ -311,6 +311,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="primary_icon_name">document-open-symbolic</property>
+                    <signal name="icon-press" handler="show_cover_selector" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
