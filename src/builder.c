@@ -87,3 +87,31 @@ show_edit(GtkButton *button,
     // TODO
   }
 }
+
+void
+show_popover_books(GtkButton *button,
+                  gpointer   data)
+{
+  GtkWidget *popover;
+  popover = get_widget(builder, "bookr-main-popover-books-list");
+
+  gtk_popover_popup(GTK_POPOVER(popover));
+  gtk_widget_show_all(GTK_WIDGET(popover));
+}
+
+void
+update_book_list(gchar *title)
+{
+  GtkWidget *container;
+  container = get_widget(builder, "bookr-main-popover-books-list-box");
+
+  GtkWidget *button;
+  button = gtk_widget_new(GTK_TYPE_MODEL_BUTTON,
+                          "text", title,
+                          NULL);
+
+  gtk_box_pack_start(GTK_BOX(container), GTK_WIDGET(button),
+                     FALSE, FALSE, 0);
+
+  printf("EXITED\n");
+}

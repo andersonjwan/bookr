@@ -14,6 +14,9 @@ GtkWidget * get_widget(GtkBuilder *, gchar *);
 GtkWindow * get_dialog(GtkBuilder *, gchar *);
 void remove_dialog(GtkWindow *);
 
+void update_book_list(gchar *);
+void show_popover_menu(GtkButton *, gpointer);
+
 void show_add(GtkButton *, gpointer);
 
 #endif

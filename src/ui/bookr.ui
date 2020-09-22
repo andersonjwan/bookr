@@ -163,6 +163,7 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="image">bookr-main-image-button-books</property>
+            <signal name="clicked" handler="show_popover_books" swapped="no"/>
           </object>
           <packing>
             <property name="pack_type">end</property>
@@ -196,12 +197,33 @@
       </object>
     </child>
   </object>
+  <object class="GtkPopoverMenu" id="bookr-main-popover-books-list">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="relative_to">bookr-main-header-button-books</property>
+    <child>
+      <object class="GtkBox" id="bookr-main-popover-books-list-box">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">5</property>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+      <packing>
+        <property name="submenu">main</property>
+      </packing>
+    </child>
+  </object>
   <object class="GtkPopover" id="bookr-main-popover-menu">
     <property name="can_focus">False</property>
+    <property name="relative_to">bookr-main-header-button-menu</property>
     <child>
       <object class="GtkBox" id="bookr-main-popover-menu-box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="border_width">5</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkModelButton" id="bookr-main-popover-menu-box-button-preferences">
