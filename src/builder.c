@@ -55,3 +55,21 @@ show_add(GtkButton *button,
     show_log_add();
   }
 }
+
+void
+show_edit(GtkButton *button,
+          gpointer   data)
+{
+  GtkWidget *stack;
+  stack = get_widget(builder, "bookr-main-stack");
+
+  const gchar *visible;
+  visible = gtk_stack_get_visible_child_name(GTK_STACK(stack));
+
+  if(strcmp(visible, "books") == 0) {
+    show_book_edit();
+  }
+  else if(strcmp(visible, "logs") == 0) {
+    // TODO
+  }
+}

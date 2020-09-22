@@ -4,6 +4,8 @@
 #include "main.h"
 
 #include "book-add.h"
+#include "book-edit.h"
+
 #include "log-add.h"
 
 /* forward declarations */

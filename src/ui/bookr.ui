@@ -187,6 +187,7 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="image">bookr-main-image-button-edit</property>
+            <signal name="clicked" handler="show_edit" swapped="no"/>
           </object>
           <packing>
             <property name="position">4</property>
