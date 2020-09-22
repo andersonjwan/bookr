@@ -17,5 +17,5 @@ void
 hide_log_add(GtkButton *button,
              gpointer   data)
 {
-  gtk_widget_destroy(GTK_WIDGET(dialog));
+  destroy_dialog(dialog);
 }
