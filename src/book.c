@@ -14,6 +14,8 @@ new_book(GtkButton *button,
     // TODO
   }
 
+  create_book_file();
+
   hide_book_add(NULL, NULL);
   print_book();
 }
@@ -83,7 +85,33 @@ create_book(GtkWidget *container)
   return new;
 }
 
-void
+static void
+create_book_file(void)
+{
+  /* create file name */
+  gchar *prefix = getenv("HOME");
+  gchar *title  = active->title;
+
+  gint size;
+  size = strlen(prefix) + strlen(title) + 1;
+
+  gchar path[size];
+  snprintf(path, strlen(prefix) + 1, "%s", prefix);
+
+  gchar name[(38 + strlen(title))];
+  snprintf(name, (strlen(title) + 38),
+           "/.local/share/bookr/data/Book - %s.data", title);
+  strncat(path, name, strlen(name));
+
+  printf("Path: %s\n", path);
+  /* create file */
+  FILE *file;
+  file = fopen(path, "w");
+
+  fclose(file);
+}
+
+static void
 print_book(void)
 {
   if(active) {
