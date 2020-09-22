@@ -142,12 +142,21 @@ select_book(GtkModelButton *button,
   gchar *title;
   title = (gchar *) data;
 
-  select_book_file(title);
+  if(!active) {
+    /* first book */
+    active = select_book_file(title);
+  }
+  else {
+    free_book();
+    active = select_book_file(title);
+  }
 }
 
-static void
+static struct Book *
 select_book_file(gchar *title)
 {
+  struct Book *loaded;
+
   /* create path */
   gchar *prefix = getenv("HOME");
 
@@ -170,8 +179,22 @@ select_book_file(gchar *title)
 
   if(!file) {
     fprintf(stderr, "Unable to open\n");
+    exit(1);
   }
+
+  loaded = load_book_file(file);
   fclose(file);
+
+  return loaded;
+}
+
+static struct Book *
+load_book_file(FILE *file)
+{
+  struct Book *loaded;
+  parse_book_file();
+
+  return NULL;
 }
 
 static void

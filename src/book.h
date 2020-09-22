@@ -4,6 +4,8 @@
 #include "main.h"
 #include "log.h"
 
+#include "book-parse.h"
+
 struct Book {
   /* book information */
   gchar *title;         // book title
@@ -31,7 +33,8 @@ static struct Book * create_book(GtkWidget *);
 static void free_book(void);
 
 void select_book(GtkModelButton *, gpointer);
-static void select_book_file(gchar *);
+static struct Book * select_book_file(gchar *);
+static struct Book * load_book_file(FILE *);
 
 static void create_book_file(void);
 static void print_book(void);

@@ -1,5 +1,5 @@
 all:
-	gcc -rdynamic `pkg-config --cflags gtk+-3.0` ./src/main.c ./src/builder.c ./src/book-add.c ./src/book-edit.c ./src/log-add.c ./src/cover-selector.c ./src/calendar-selector.c ./src/book.c ./src/log.c --output ./build/bookr.out `pkg-config --libs gtk+-3.0`
+	gcc -rdynamic `pkg-config --cflags gtk+-3.0` ./src/main.c ./src/builder.c ./src/book-add.c ./src/book-edit.c ./src/log-add.c ./src/cover-selector.c ./src/calendar-selector.c ./src/book.c ./src/log.c ./src/book-parse.c --output ./build/bookr.out `pkg-config --libs gtk+-3.0`
 	mkdir -p /$$HOME/.local/share/bookr/data/
 
 install:
