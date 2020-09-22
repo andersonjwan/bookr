@@ -324,6 +324,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="primary_icon_name">org.gnome.Calendar-symbolic</property>
+                    <signal name="icon-press" handler="show_calendar_selector" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
