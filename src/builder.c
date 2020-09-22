@@ -37,8 +37,16 @@ get_dialog(GtkBuilder *builder, gchar *identifier)
 
   /* set dialog properties */
   gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
+  gtk_application_add_window(GTK_APPLICATION(bookr), GTK_WINDOW(dialog));
 
   return GTK_WINDOW(dialog);
+}
+
+void
+destroy_dialog(GtkWindow *dialog)
+{
+  gtk_application_remove_window(GTK_APPLICATION(bookr), GTK_WINDOW(dialog));
+  gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
 void
