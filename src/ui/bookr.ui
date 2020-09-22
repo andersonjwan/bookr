@@ -34,8 +34,8 @@
   <object class="GtkApplicationWindow" id="bookr-window-main">
     <property name="can_focus">False</property>
     <property name="border_width">10</property>
-    <property name="default_width">640</property>
-    <property name="default_height">480</property>
+    <property name="default_width">840</property>
+    <property name="default_height">680</property>
     <child>
       <object class="GtkStack" id="bookr-main-stack">
         <property name="visible">True</property>
