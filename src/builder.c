@@ -51,4 +51,7 @@ show_add(GtkButton *button,
   if(strcmp(visible, "books") == 0) {
     show_book_add();
   }
+  else if(strcmp(visible, "logs") == 0) {
+    show_log_add();
+  }
 }

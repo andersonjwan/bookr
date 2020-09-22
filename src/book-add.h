@@ -6,4 +6,5 @@
 /* forward declarations */
 void show_book_add(void);
 void hide_book_add(GtkButton *, gpointer);
+
 #endif

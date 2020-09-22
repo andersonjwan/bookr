@@ -2,7 +2,9 @@
 #define BUILDER_H
 
 #include "main.h"
+
 #include "book-add.h"
+#include "log-add.h"
 
 /* forward declarations */
 void activate(GtkApplication *, gpointer);
