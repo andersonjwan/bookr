@@ -151,6 +151,7 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="image">bookr-main-image-button-menu</property>
+            <signal name="clicked" handler="show_popover_menu" swapped="no"/>
           </object>
           <packing>
             <property name="pack_type">end</property>
