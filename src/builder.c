@@ -47,10 +47,9 @@ get_dialog(GtkBuilder *builder, gchar *identifier)
 }
 
 void
-destroy_dialog(GtkWindow *dialog)
+remove_dialog(GtkWindow *dialog)
 {
   gtk_application_remove_window(GTK_APPLICATION(bookr), GTK_WINDOW(dialog));
-  gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
 void

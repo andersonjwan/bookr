@@ -12,7 +12,7 @@
 void activate(GtkApplication *, gpointer);
 GtkWidget * get_widget(GtkBuilder *, gchar *);
 GtkWindow * get_dialog(GtkBuilder *, gchar *);
-void destroy_dialog(GtkWindow *);
+void remove_dialog(GtkWindow *);
 
 void show_add(GtkButton *, gpointer);
 

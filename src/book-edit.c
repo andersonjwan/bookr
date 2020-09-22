@@ -19,7 +19,6 @@ void
 hide_book_edit(GtkButton *button,
                gpointer   data)
 {
-  destroy_dialog(dialog);
-  g_object_unref(G_OBJECT(builder));
-  builder = NULL;
+  remove_dialog(GTK_WINDOW(dialog));
+  gtk_widget_hide(GTK_WIDGET(dialog));
 }
