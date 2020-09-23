@@ -9,13 +9,10 @@ new_log(GtkButton *button,
   active = get_book_active();
 
   if(active) {
-    printf("Current: %s\n", active->title);
-
     struct Log *new;
     new = create_log();
-    print_log(new);
 
-    // insert_log(new);
+    insert_log(new);
   }
 
   hide_log_add(NULL, NULL);
@@ -97,6 +94,25 @@ create_log(void)
 
   new->prev = NULL;
   new->next = NULL;
+}
+
+static void
+insert_log(struct Log *new)
+{
+  if(!(active->log)) {
+    active->log = new;
+  }
+  else {
+    struct Log *iter;
+    iter = active->log;
+
+    while(iter->next) {
+      iter = iter->next;
+    }
+
+    iter->next = new;
+    new->prev  = iter;
+  }
 }
 
 static void
