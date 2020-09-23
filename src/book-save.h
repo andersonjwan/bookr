@@ -7,6 +7,8 @@
 #include "log.h"
 
 /* forward declarations */
+struct Log;
+
 void save_book_file(void);
 
 static void write_book(void);
