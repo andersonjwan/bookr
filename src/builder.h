@@ -7,6 +7,8 @@
 #include "book-add.h"
 #include "book-edit.h"
 
+#include "bookr-open.h"
+
 #include "log-add.h"
 
 struct BookList {

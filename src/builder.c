@@ -164,5 +164,4 @@ update_book_list(gchar *title)
 
     iter->next = new;
   }
-  printf("EXITED\n");
 }
