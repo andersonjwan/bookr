@@ -29,8 +29,6 @@ write_book(void)
 static void
 write_book_information(void)
 {
-  fprintf(file, "INFORMATION:BEGIN\n");
-
   fprintf(file, "TITLE:%s\n",       active->title);
   fprintf(file, "AUTHOR:%s\n",      active->author);
   fprintf(file, "PUBLISHER:%s\n",   active->publisher);
@@ -43,15 +41,11 @@ write_book_information(void)
   fprintf(file, "COVERPATH:%s\n",   active->cover);
   fprintf(file, "ICALPATH:%s\n",    active->calendar);
   fprintf(file, "FILEPATH:%s\n",    active->path);
-
-  fprintf(file, "INFORMATION:END\n");
 }
 
 static void
 write_book_logs(void)
 {
-  fprintf(file, "LOGS:BEGIN\n");
-
   struct Log *iter;
   iter = active->log;
 
@@ -59,8 +53,6 @@ write_book_logs(void)
     write_log(iter);
     iter = iter->next;
   }
-
-  fprintf(file, "LOGS:END\n");
 }
 
 static void
