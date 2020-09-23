@@ -18,11 +18,12 @@ new_book(GtkButton *button,
   }
 
   active = create_book(GTK_WIDGET(data));
-  update_book_list(active->title);
 
+  update_book_list(active->title);
   hide_book_add(NULL, NULL);
+
   create_book_file();
-  print_book();
+  save_book_file();
 }
 
 static struct Book *
