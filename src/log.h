@@ -19,6 +19,8 @@ struct Log {
   guint start_pg;       // log's start page
   guint end_pg;         // log's end page
 
+  gchar *note;          // log's note
+
   struct Log *prev;     // previous log
   struct Log *next;     // next log
 };
