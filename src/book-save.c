@@ -38,10 +38,11 @@ write_book_information(void)
   fprintf(file, "EDITION:%02d\n",   active->edition);
   fprintf(file, "LANGUAGE:%s\n",    active->language);
   fprintf(file, "ISBN:%s\n",        active->ISBN);
-  fprintf(file, "STARTPAGE:%02d\n", active->start);
-  fprintf(file, "PRINT:%04d\n",     active->pages);
+  fprintf(file, "STARTPAGE:%05d\n", active->start);
+  fprintf(file, "PRINT:%05d\n",     active->pages);
   fprintf(file, "COVERPATH:%s\n",   active->cover);
   fprintf(file, "ICALPATH:%s\n",    active->calendar);
+  fprintf(file, "FILEPATH:%s\n",    active->path);
 
   fprintf(file, "INFORMATION:END\n");
 }
