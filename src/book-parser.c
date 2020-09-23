@@ -1,31 +1,37 @@
 #include "book-parser.h"
 
-extern FILE *input;
-
-void
+struct Book *
 parse_book_file(FILE *file)
 {
   init_book_lexer(file);
 
-  parse_book();
-  printf("BOOK PARSED\n");
-  return;
+  struct Book *active;
+  active = parse_book();
+
+  reset_book_lexer();
+
+  return active;
 }
 
-static void
+struct Book *
 parse_book(void)
 {
+  struct Book *new;
+  new = NULL;
+
   expect_key("BOOK");
   expect_value("BEGIN", NULL);
 
-  parse_book_information();
+  new = parse_book_information();
+  new->log = NULL;
 
   gchar *token;
   token = peek_key();
 
   if(strcmp(token, "LOG") == 0) {
     free(token);
-    parse_book_log();
+
+    new->log = parse_book_log();
   }
   else {
     free(token);
@@ -33,140 +39,220 @@ parse_book(void)
 
   expect_key("BOOK");
   expect_value("END", NULL);
+
+  return new;
 }
 
-static void
+static struct Book *
 parse_book_information(void)
 {
-  parse_book_title();
-  parse_book_author();
-  parse_book_publisher();
-  parse_book_published();
-  parse_book_edition();
-  parse_book_language();
-  parse_book_ISBN();
-  parse_book_start_page();
-  parse_book_print();
-  parse_book_cover();
-  parse_book_calendar();
-  parse_book_path();
+  struct Book *new;
+  new = (struct Book *) malloc(sizeof(struct Book));
+
+  gchar *data;
+
+  data = parse_book_title();
+  new->title = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->title, data);
+  g_free(data);
+
+  data = parse_book_author();
+  new->author = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->author, data);
+  g_free(data);
+
+  data = parse_book_publisher();
+  new->publisher = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->publisher, data);
+  g_free(data);
+
+  data = parse_book_published();
+  new->published = atoi(data);
+  g_free(data);
+
+  data = parse_book_edition();
+  new->edition = atoi(data);
+  g_free(data);
+
+  data = parse_book_language();
+  new->language = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->language, data);
+  g_free(data);
+
+  data = parse_book_ISBN();
+  new->ISBN = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->ISBN, data);
+  free(data);
+
+  data = parse_book_start_page();
+  new->start = atoi(data);
+  free(data);
+
+  data = parse_book_print();
+  new->pages = atoi(data);
+  free(data);
+
+  data = parse_book_cover();
+  new->cover = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->cover, data);
+  free(data);
+
+  data = parse_book_calendar();
+  new->calendar = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->calendar, data);
+  free(data);
+
+  data = parse_book_path();
+  new->path = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->path, data);
+  free(data);
+
+  return new;
 }
 
-static void
+static gchar *
 parse_book_title(void)
 {
   expect_key("TITLE");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_author(void)
 {
   expect_key("AUTHOR");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_publisher(void)
 {
   expect_key("PUBLISHER");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_published(void)
 {
   expect_key("PUBLISHED");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_edition(void)
 {
   expect_key("EDITION");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_language(void)
 {
   expect_key("LANGUAGE");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_ISBN(void)
 {
   expect_key("ISBN");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_start_page(void)
 {
   expect_key("STARTPAGE");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_print(void)
 {
   expect_key("PRINT");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_cover(void)
 {
   expect_key("COVERPATH");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_calendar(void)
 {
   expect_key("ICALPATH");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_path(void)
 {
   expect_key("FILEPATH");
 
   gchar *token;
   token = get_value(NULL);
+
+  return token;
 }
 
-static void
+static struct Log *
 parse_book_log(void)
 {
+  struct Log *new;
+
   expect_key("LOG");
   expect_value("BEGIN", NULL);
 
-  parse_book_log_information();
+  new = parse_book_log_information();
+  new->prev = NULL;
+  new->next = NULL;
 
   expect_key("LOG");
   expect_value("END", NULL);
@@ -177,114 +263,174 @@ parse_book_log(void)
   if(strcmp(token, "LOG") == 0) {
     g_free(token);
 
-    parse_book_log();
+    struct Log *tmp;
+    tmp = parse_book_log();
+
+    new->next = tmp;
+    tmp->prev = new;
   }
+
+  return new;
 }
 
-static void
+static struct Log *
 parse_book_log_information(void)
 {
-  parse_book_log_day();
-  parse_book_log_month();
-  parse_book_log_year();
+  struct Log *new;
+  new = (struct Log *) malloc(sizeof(struct Log));
 
-  parse_book_log_start_hour();
-  parse_book_log_start_minute();
-  parse_book_log_end_hour();
-  parse_book_log_end_minute();
+  gchar *data;
 
-  parse_book_log_start_page();
-  parse_book_log_end_page();
+  data = parse_book_log_day();
+  new->day = atoi(data);
+  g_free(data);
 
-  parse_book_log_note();
+  data = parse_book_log_month();
+  new->month = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_year();
+  new->year = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_start_hour();
+  new->start_hr = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_start_minute();
+  new->start_min = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_end_hour();
+  new->end_hr = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_end_minute();
+  new->end_min = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_start_page();
+  new->start_pg = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_end_page();
+  new->end_pg = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_note();
+  new->note = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->note, data);
+  g_free(data);
+
+  return new;
 }
 
-static void
+static gchar *
 parse_book_log_day(void)
 {
   expect_key("DAY");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_month(void)
 {
   expect_key("MONTH");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_year(void)
 {
   expect_key("YEAR");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_start_hour(void)
 {
   expect_key("STARTHOUR");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_start_minute(void)
 {
   expect_key("STARTMIN");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_end_hour(void)
 {
   expect_key("ENDHOUR");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_end_minute(void)
 {
   expect_key("ENDMIN");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_start_page(void)
 {
   expect_key("STARTPAGE");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_end_page(void)
 {
   expect_key("ENDPAGE");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }
 
-static void
+static gchar *
 parse_book_log_note(void)
 {
   expect_key("NOTES");
 
   gchar *token;
   token = get_value(";");
+
+  return token;
 }

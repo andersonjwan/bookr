@@ -114,15 +114,21 @@ select_book(GtkModelButton *button,
 
   if(active) {
     save_book_file();
+    printf("BOOK SAVED\n");
     free_book();
+
+    printf("BOOK FREED\n");
   }
 
   active = select_book_file(path);
+  print_book();
 }
 
 static struct Book *
 select_book_file(gchar *path)
 {
+  struct Book *book;
+
   FILE *file;
   file = fopen(path, "r");
 
@@ -130,8 +136,10 @@ select_book_file(gchar *path)
     fprintf(stderr, "Unable to open\n");
   }
 
-  parse_book_file(file);
+  book = parse_book_file(file);
   fclose(file);
+
+  return book;
 }
 
 static void
@@ -148,7 +156,7 @@ free_book(void)
 
   /* free logs */
   if(active->log) {
-    // TODO
+    free_log(active->log);
   }
 
   g_free((struct Book *) active);
