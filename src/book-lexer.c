@@ -1,11 +1,17 @@
 #include "book-lexer.h"
 
-static FILE *input;
+static FILE *input = NULL;
 
 void
 init_book_lexer(FILE *file)
 {
   input = file;
+}
+
+void
+reset_book_lexer(void)
+{
+  input = NULL;
 }
 
 void

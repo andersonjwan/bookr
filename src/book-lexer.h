@@ -7,6 +7,7 @@
 
 /* forward declarations */
 void init_book_lexer(FILE *);
+void reset_book_lexer(void);
 
 void expect_key(gchar *);
 void expect_value(gchar *, gchar *);
