@@ -30,6 +30,8 @@ void new_log(GtkButton *, gpointer);
 static struct Log * create_log(void);
 static void insert_log(struct Log *);
 
+void free_log(struct Log *);
+
 static void print_log(struct Log *);
 
 #endif

@@ -115,6 +115,22 @@ insert_log(struct Log *new)
   }
 }
 
+void
+free_log(struct Log *head)
+{
+  struct Log *iter, *tmp;
+  iter = head;
+  tmp = iter;
+
+  while(iter) {
+    tmp = iter;
+    iter = iter->next;
+
+    g_free(tmp->note);
+    g_free(tmp);
+  }
+}
+
 static void
 print_log(struct Log *log)
 {
