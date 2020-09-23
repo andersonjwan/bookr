@@ -5,7 +5,7 @@
 #include "log.h"
 
 #include "book-save.h"
-#include "book-parse.h"
+#include "book-parser.h"
 
 struct Book {
   /* book information */

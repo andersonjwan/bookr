@@ -130,6 +130,7 @@ select_book_file(gchar *path)
     fprintf(stderr, "Unable to open\n");
   }
 
+  parse_book_file(file);
   fclose(file);
 }
 
