@@ -2,19 +2,22 @@
 
 static struct Book *active = NULL;
 
+struct Book *
+get_book_active(void)
+{
+  return active;
+}
+
 void
 new_book(GtkButton *button,
          gpointer   data)
 {
-  if(!active) {
-    /* first book */
-    active = create_book(GTK_WIDGET(data));
-  }
-  else {
+  if(active) {
+    save_book_file();
     free_book();
-    active = create_book(GTK_WIDGET(data));
   }
 
+  active = create_book(GTK_WIDGET(data));
   update_book_list(active->title);
 
   hide_book_add(NULL, NULL);
@@ -83,8 +86,50 @@ create_book(GtkWidget *container)
   strncpy(new->calendar, data[10], size);
 
   new->log = NULL;
+  new->path = create_book_path(new->title);
 
   return new;
+}
+
+static void
+create_book_file(void)
+{
+  gchar *path;
+  path = create_book_path(active->title);
+
+  /* create file */
+  FILE *file;
+  file = fopen(path, "w");
+
+  fclose(file);
+}
+
+void
+select_book(GtkModelButton *button,
+            gpointer        data)
+{
+  gchar *path;
+  path = (gchar *) data;
+
+  if(active) {
+    save_book_file();
+    free_book();
+  }
+
+  active = select_book_file(path);
+}
+
+static struct Book *
+select_book_file(gchar *path)
+{
+  FILE *file;
+  file = fopen(path, "r");
+
+  if(!file) {
+    fprintf(stderr, "Unable to open\n");
+  }
+
+  fclose(file);
 }
 
 static void
@@ -109,17 +154,17 @@ free_book(void)
   return;
 }
 
-static void
-create_book_file(void)
+gchar *
+create_book_path(gchar *title)
 {
   /* create file name */
   gchar *prefix = getenv("HOME");
-  gchar *title  = active->title;
 
   gint size;
   size = strlen(prefix) + strlen(title) + 1;
 
-  gchar path[size];
+  gchar *path;
+  path = (gchar *) malloc(sizeof(path) * size);
   strcpy(path, prefix);
 
   gchar name[(38 + strlen(title))];
@@ -127,74 +172,7 @@ create_book_file(void)
            "/.local/share/bookr/data/Book - %s.data", title);
   strncat(path, name, strlen(name));
 
-  printf("Path: %s\n", path);
-  /* create file */
-  FILE *file;
-  file = fopen(path, "w");
-
-  fclose(file);
-}
-
-void
-select_book(GtkModelButton *button,
-            gpointer        data)
-{
-  gchar *title;
-  title = (gchar *) data;
-
-  if(!active) {
-    /* first book */
-    active = select_book_file(title);
-  }
-  else {
-    free_book();
-    active = select_book_file(title);
-  }
-}
-
-static struct Book *
-select_book_file(gchar *title)
-{
-  struct Book *loaded;
-
-  /* create path */
-  gchar *prefix = getenv("HOME");
-
-  gint size;
-  size = strlen(prefix) + strlen(title) + 1;
-
-  gchar path[size];
-  strcpy(path, prefix);
-
-  gchar name[(38 + strlen(title))];
-  snprintf(name, (strlen(title) + 38),
-           "/.local/share/bookr/data/Book - %s.data", title);
-
-  strncat(path, name, strlen(name));
-
-  printf("Path: %s\n", path);
-
-  FILE *file;
-  file = fopen(path, "r");
-
-  if(!file) {
-    fprintf(stderr, "Unable to open\n");
-    exit(1);
-  }
-
-  loaded = load_book_file(file);
-  fclose(file);
-
-  return loaded;
-}
-
-static struct Book *
-load_book_file(FILE *file)
-{
-  struct Book *loaded;
-  parse_book_file();
-
-  return NULL;
+  return path;
 }
 
 static void
@@ -214,6 +192,7 @@ print_book(void)
     printf("Cover: %s\n", active->cover);
     printf("Calendar: %s\n", active->calendar);
     printf("Log: %p\n", active->log);
+    printf("Path: %s\n", active->path);
   }
 
   return;

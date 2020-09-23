@@ -121,14 +121,10 @@ update_book_list(gchar *title)
                           "text", title,
                           NULL);
 
-  gchar *book;
-  book = (gchar *) malloc(sizeof(gchar) * strlen(title));
-  strncpy(book, title, strlen(title));
-
   gtk_box_pack_start(GTK_BOX(container), GTK_WIDGET(button),
                      FALSE, FALSE, 0);
 
   g_signal_connect(GTK_MODEL_BUTTON(button), "clicked",
-                   G_CALLBACK(select_book), book);
+                   G_CALLBACK(select_book), create_book_path(title));
   printf("EXITED\n");
 }

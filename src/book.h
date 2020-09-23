@@ -4,6 +4,7 @@
 #include "main.h"
 #include "log.h"
 
+#include "book-save.h"
 #include "book-parse.h"
 
 struct Book {
@@ -25,17 +26,24 @@ struct Book {
 
   /* log information */
   struct Log *log;      // book logs
+
+  /* save information */
+  gchar *path;
 };
 
 /* forward declarations */
+struct Book * get_book_active(void);
+
 void new_book(GtkButton *, gpointer);
 static struct Book * create_book(GtkWidget *);
-static void free_book(void);
+static void create_book_file(void);
 
 void select_book(GtkModelButton *, gpointer);
 static struct Book * select_book_file(gchar *);
-static struct Book * load_book_file(FILE *);
 
-static void create_book_file(void);
+static void free_book(void);
+gchar * create_book_path(gchar *);
+
 static void print_book(void);
+
 #endif
