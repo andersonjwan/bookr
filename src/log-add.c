@@ -3,6 +3,12 @@
 static GtkBuilder *builder = NULL;
 static GtkWindow  *dialog  = NULL;
 
+GtkBuilder *
+get_log_add_builder(void)
+{
+  return builder;
+}
+
 void
 show_log_add(void)
 {

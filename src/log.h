@@ -25,4 +25,10 @@ struct Log {
   struct Log *next;     // next log
 };
 
+/* forward declarations */
+void new_log(GtkButton *, gpointer);
+
+static struct Log * create_log(void);
+static void print_log(struct Log *);
+
 #endif
