@@ -9,7 +9,17 @@
 
 #include "log-add.h"
 
+struct BookList {
+  gchar *title;
+  gchar *path;
+
+  struct BookList *next;
+};
+
 /* forward declarations */
+struct BookList * get_builder_book_list(void);
+GtkBuilder * get_builder_builder(void);
+
 void activate(GtkApplication *, gpointer);
 GtkWidget * get_widget(GtkBuilder *, gchar *);
 GtkWindow * get_dialog(GtkBuilder *, gchar *);
