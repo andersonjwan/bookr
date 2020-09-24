@@ -3,18 +3,12 @@
 void
 bookr_open(void)
 {
-  printf("[enter] bookr_open\n");
-
   bookr_load_book_list();
-
-  printf("[exit] bookr_open\n");
 }
 
 static void
 bookr_load_book_list(void)
 {
-  printf("[enter] bookr_load_book_list\n");
-
   FILE *file;
   file = fopen("books-list.data", "r");
 
@@ -25,15 +19,11 @@ bookr_load_book_list(void)
     reset_book_lexer();
     fclose(file);
   }
-
-  printf("[exit] bookr_load_book_list\n");
 }
 
 static void
 bookr_parse_book_list()
 {
-  printf("[enter] bookr_parse_book_list\n");
-
   gchar *token;
   token = peek_key();
 
@@ -50,14 +40,11 @@ bookr_parse_book_list()
   else {
     g_free(token);
   }
-
-  printf("[exit] bookr_parse_book_list\n");
 }
 
 static void
 bookr_parse_book(void)
 {
-  printf("[enter] bookr_parse_book\n");
   gchar *title, *path;
 
   expect_key("BOOK");
@@ -73,8 +60,6 @@ bookr_parse_book(void)
 
   expect_key("BOOK");
   expect_value("END", NULL);
-
-  printf("[exit] bookr_parse_book\n");
 }
 
 static gchar *
