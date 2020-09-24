@@ -9,6 +9,8 @@
 
 #include "log-add.h"
 
+#include "bookr-open.h"
+
 extern GList *books;
 
 /* forward declarations */
