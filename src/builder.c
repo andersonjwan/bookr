@@ -26,6 +26,8 @@ activate(GtkApplication *app,
   GtkWindow *window;
   window = GTK_WINDOW(get_widget(builder, "bookr-window-main"));
 
+  bookr_open();
+
   gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(window));
   gtk_widget_show_all(GTK_WIDGET(window));
 }
@@ -128,18 +130,26 @@ update_book_list(gchar *title)
                           "text", title,
                           NULL);
 
-  gchar *list_title;
-  list_title = create_book_path(title);
+  gchar *path;
+  path = create_book_path(title);
 
   gtk_box_pack_start(GTK_BOX(container), GTK_WIDGET(button),
                      FALSE, FALSE, 0);
 
   g_signal_connect(GTK_MODEL_BUTTON(button), "clicked",
-                   G_CALLBACK(select_book), list_title);
+                   G_CALLBACK(select_book), path);
 
   /* add book to list */
+  gchar **book;
+  book = (gchar **) malloc(sizeof(gchar *) * 2);
+
+  book[0] = (gchar *) malloc(sizeof(gchar) * strlen(title) + 1);
+  strcpy(book[0], title);
+
+  book[1] = path;
+
   if(!books)
-    books = g_list_append(books, list_title); // set first element
+    books = g_list_append(books, book); // set first element
   else
-    g_list_append(books, list_title);
+    g_list_append(books, book);
 }
