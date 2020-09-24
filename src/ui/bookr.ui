@@ -36,6 +36,7 @@
     <property name="border_width">10</property>
     <property name="default_width">840</property>
     <property name="default_height">680</property>
+    <signal name="delete-event" handler="bookr_close" swapped="no"/>
     <child>
       <object class="GtkStack" id="bookr-main-stack">
         <property name="visible">True</property>
