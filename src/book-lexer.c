@@ -17,6 +17,8 @@ reset_book_lexer(void)
 void
 expect_key(gchar *expected)
 {
+  printf("[enter] expect_key\n");
+
   gchar *key;
   key = get_key();
 
@@ -29,6 +31,8 @@ expect_key(gchar *expected)
   }
 
   free(key);
+
+  printf("[exit] expect_key\n");
 }
 
 void
@@ -49,6 +53,8 @@ expect_value(gchar *expected, gchar *delimeter)
 gchar *
 get_key(void)
 {
+  printf("[enter] get_key\n");
+
   gchar character;
   gint size = 64, index = 0;
 
@@ -65,7 +71,7 @@ get_key(void)
   /* read first character */
   character = getc(input);
 
-  while(character != ':' && character != '\n') {
+  while(character != ':' && character != '\n' && character != EOF) {
     /* test index position */
     if(index >= size - 1) {
       /* buffer limit reached */
@@ -91,6 +97,7 @@ get_key(void)
   /* append null-terminating character */
   buffer[index] = '\0';
 
+  printf("[exit] get_key");
   return buffer;
 }
 
@@ -186,7 +193,7 @@ peek_key(void)
   /* read first character */
   character = getc(input);
 
-  while(character != ':' && character != '\n') {
+  while(character != ':' && character != '\n' && character != EOF) {
     /* test index position */
     if(index >= size - 1) {
       /* buffer limit reached */
