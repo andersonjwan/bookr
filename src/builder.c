@@ -2,6 +2,7 @@
 
 static GtkApplication *bookr   = NULL;
 static GtkBuilder     *builder = NULL;
+GList                 *books   = NULL;
 
 GtkBuilder *
 get_builder_builder(void)
@@ -127,9 +128,18 @@ update_book_list(gchar *title)
                           "text", title,
                           NULL);
 
+  gchar *list_title;
+  list_title = create_book_path(title);
+
   gtk_box_pack_start(GTK_BOX(container), GTK_WIDGET(button),
                      FALSE, FALSE, 0);
 
   g_signal_connect(GTK_MODEL_BUTTON(button), "clicked",
-                   G_CALLBACK(select_book), create_book_path(title));
+                   G_CALLBACK(select_book), list_title);
+
+  /* add book to list */
+  if(!books)
+    books = g_list_append(books, list_title); // set first element
+  else
+    g_list_append(books, list_title);
 }

@@ -9,6 +9,8 @@
 
 #include "log-add.h"
 
+extern GList *books;
+
 /* forward declarations */
 struct BookList * get_builder_book_list(void);
 GtkBuilder * get_builder_builder(void);
