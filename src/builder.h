@@ -9,13 +9,6 @@
 
 #include "log-add.h"
 
-struct BookList {
-  gchar *title;
-  gchar *path;
-
-  struct BookList *next;
-};
-
 /* forward declarations */
 struct BookList * get_builder_book_list(void);
 GtkBuilder * get_builder_builder(void);

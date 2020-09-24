@@ -2,13 +2,6 @@
 
 static GtkApplication *bookr   = NULL;
 static GtkBuilder     *builder = NULL;
-static struct BookList *list   = NULL;
-
-struct BookList *
-get_builder_book_list(void)
-{
-  return list;
-}
 
 GtkBuilder *
 get_builder_builder(void)
@@ -137,31 +130,6 @@ update_book_list(gchar *title)
   gtk_box_pack_start(GTK_BOX(container), GTK_WIDGET(button),
                      FALSE, FALSE, 0);
 
-  gchar *book;
-  book = create_book_path(title);
-
   g_signal_connect(GTK_MODEL_BUTTON(button), "clicked",
-                   G_CALLBACK(select_book), book);
-
-  struct BookList *new;
-  new = (struct BookList *) malloc(sizeof(struct BookList));
-  new->next = NULL;
-
-  new->title = (gchar *) malloc(sizeof(gchar) * strlen(title) + 1);
-  strcpy(new->title, title);
-  new->path = book;
-
-  if(!list) {
-    list = new;
-  }
-  else {
-    struct BookList *iter;
-    iter = list;
-
-    while(iter->next) {
-      iter = iter->next;
-    }
-
-    iter->next = new;
-  }
+                   G_CALLBACK(select_book), create_book_path(title));
 }
