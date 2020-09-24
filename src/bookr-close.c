@@ -17,10 +17,13 @@ bookr_save_book_list(GList *list)
 
   iter = list, tmp = list;
   while(iter) {
-    fprintf(file, "BOOK:");
+    fprintf("BOOK:BEGIN\n");
+
+    fprintf(file, "PATH:");
     fprintf(file, "%s\n", iter->data);
     g_free(iter->data);
 
+    fprintf("BOOK:END\n");
     iter = iter->next;
 }
 
