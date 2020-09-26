@@ -120,7 +120,7 @@ show_popover_books(GtkButton *button,
 }
 
 void
-update_book_list(gchar *title)
+update_book_list(gchar *title, gchar *path)
 {
   GtkWidget *container;
   container = get_widget(builder, "bookr-main-popover-books-list-box");
@@ -130,14 +130,15 @@ update_book_list(gchar *title)
                           "text", title,
                           NULL);
 
-  gchar *path;
-  path = create_book_path(title);
-
   gtk_box_pack_start(GTK_BOX(container), GTK_WIDGET(button),
                      FALSE, FALSE, 0);
 
+  gchar *data;
+  data = (gchar *) malloc(sizeof(gchar) * strlen(path) + 1);
+  strcpy(data, path);
+
   g_signal_connect(GTK_MODEL_BUTTON(button), "clicked",
-                   G_CALLBACK(select_book), path);
+                   G_CALLBACK(select_book), data);
 
   /* add book to list */
   gchar **book;
@@ -146,7 +147,8 @@ update_book_list(gchar *title)
   book[0] = (gchar *) malloc(sizeof(gchar) * strlen(title) + 1);
   strcpy(book[0], title);
 
-  book[1] = path;
+  book[1] = (gchar *) malloc(sizeof(gchar) * strlen(path) + 1);
+  strcpy(book[1], path);
 
   if(!books)
     books = g_list_append(books, book); // set first element
