@@ -60,8 +60,6 @@ create_log(void)
   widget = get_widget(builder, "bookr-log-add-pages-entry-end-page");
   data[7] = gtk_entry_get_text(GTK_ENTRY(widget));
 
-  printf("End Page: %s\n", data[7]);
-
   GObject *buffer;
   buffer = gtk_builder_get_object(GTK_BUILDER(builder),
                                   "bookr-log-add-notes-text-buffer");
