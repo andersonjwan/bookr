@@ -112,14 +112,9 @@ select_book(GtkModelButton *button,
   gchar *path;
   path = (gchar *) data;
 
-  printf("PATH: %s\n", path);
-
   if(active) {
     save_book_file();
-    printf("BOOK SAVED\n");
     free_book();
-
-    printf("BOOK FREED\n");
   }
 
   active = select_book_file(path);
@@ -187,7 +182,6 @@ create_book_path(gchar *isbn, gchar *title)
   strcat(path, subpath);
   strcat(path, filename);
 
-  printf("PATH: %s\n", path);
   return path;
 }
 
