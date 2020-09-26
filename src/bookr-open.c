@@ -53,7 +53,7 @@ bookr_parse_book(void)
   title = bookr_parse_book_title();
   path  = bookr_parse_book_path();
 
-  update_book_list(title);
+  update_book_list(title, path);
 
   g_free(title);
   g_free(path);
