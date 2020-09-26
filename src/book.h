@@ -13,7 +13,7 @@ struct Book {
   gchar *author;        // book author
   gchar *publisher;     // book publisher
   gchar *language;      // book print langauge
-  gchar *ISBN;          // book identifier
+  gchar *isbn;          // book identifier
 
   gint published;       // book year published
   gint edition;         // book edition / volume

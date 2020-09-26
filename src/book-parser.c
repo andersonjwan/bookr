@@ -80,8 +80,8 @@ parse_book_information(void)
   g_free(data);
 
   data = parse_book_ISBN();
-  new->ISBN = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
-  strcpy(new->ISBN, data);
+  new->isbn = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->isbn, data);
   free(data);
 
   data = parse_book_start_page();

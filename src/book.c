@@ -75,8 +75,8 @@ create_book(GtkWidget *container)
   strncpy(new->language, data[5], size);
 
   size = strlen(data[6]) + 1;
-  new->ISBN = (gchar *) malloc(sizeof(gchar) * size);
-  strncpy(new->ISBN, data[6], size);
+  new->isbn = (gchar *) malloc(sizeof(gchar) * size);
+  strncpy(new->isbn, data[6], size);
 
   size = strlen(data[9]) + 1;
   new->cover = (gchar *) malloc(sizeof(gchar) * size);
@@ -87,7 +87,7 @@ create_book(GtkWidget *container)
   strncpy(new->calendar, data[10], size);
 
   new->log = NULL;
-  new->path = create_book_path(new->ISBN, new->title);
+  new->path = create_book_path(new->isbn, new->title);
 
   return new;
 }
@@ -96,7 +96,7 @@ static void
 create_book_file(void)
 {
   gchar *path;
-  path = create_book_path(active->ISBN, active->title);
+  path = create_book_path(active->isbn, active->title);
 
   /* create file */
   FILE *file;
@@ -147,7 +147,7 @@ free_book(void)
   g_free((gchar *) active->author);
   g_free((gchar *) active->publisher);
   g_free((gchar *) active->language);
-  g_free((gchar *) active->ISBN);
+  g_free((gchar *) active->isbn);
   g_free((gchar *) active->cover);
   g_free((gchar *) active->calendar);
 
@@ -193,7 +193,7 @@ print_book(void)
     printf("Author: %s\n", active->author);
     printf("Publisher: %s\n", active->publisher);
     printf("Language: %s\n", active->language);
-    printf("ISBN: %s\n", active->ISBN);
+    printf("ISBN: %s\n", active->isbn);
     printf("Published: %d\n", active->published);
     printf("Edition: %d\n", active->edition);
     printf("Start: %d\n", active->start);
