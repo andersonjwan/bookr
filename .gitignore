@@ -3,3 +3,6 @@
 
 # Temporary UI Files
 *.ui~
+
+# Data Files
+*.data
