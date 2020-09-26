@@ -13,6 +13,7 @@ new_log(GtkButton *button,
     new = create_log();
 
     insert_log(new);
+    print_log(new);
   }
 
   hide_log_add(NULL, NULL);
@@ -76,9 +77,9 @@ create_log(void)
   new->month = month;
   new->year  = year;
 
-  new->start_hr  = atoi(data[0]);
+  new->start_hr  = convert_time(atoi(data[0]), data[2]);
   new->start_min = atoi(data[1]);
-  new->end_hr    = atoi(data[3]);
+  new->end_hr    = convert_time(atoi(data[3]), data[5]);
   new->end_min   = atoi(data[4]);
 
   new->start_pg  = atoi(data[6]);
@@ -140,4 +141,72 @@ print_log(struct Log *log)
 
   printf("Prev: %p\n", log->prev);
   printf("Next: %p\n", log->next);
+}
+
+void
+swap_format(GtkButton *button,
+            gpointer   data)
+{
+  gchar const *label;
+  label = gtk_button_get_label(GTK_BUTTON(button));
+
+  int result;
+  result = strcmp(label, "AM");
+
+  switch(result) {
+  case 0: {
+    gtk_button_set_label(GTK_BUTTON(button), "PM");
+  }
+    break;
+  default: {
+    gtk_button_set_label(GTK_BUTTON(button), "AM");
+  }
+    break;
+  }
+
+  check_swap(button);
+}
+
+static void
+check_swap(GtkButton *button)
+{
+  GtkBuilder *builder;
+  builder = get_log_add_builder();
+
+  GtkWidget *button_01, *button_02;
+  button_01 = get_widget(builder, "bookr-log-add-time-button-start");
+  button_02 = get_widget(builder, "bookr-log-add-time-button-end");
+
+  gchar const *label_01, *label_02;
+  label_01 = gtk_button_get_label(GTK_BUTTON(button_01));
+  label_02 = gtk_button_get_label(GTK_BUTTON(button_02));
+
+  gint result_01, result_02;
+  result_01 = strcmp(label_01, "AM");
+  result_02 = strcmp(label_02, "AM");
+
+  if(GTK_WIDGET(button) == GTK_WIDGET(button_01)) {
+    switch(result_01) {
+    case 0: {
+      ;
+    }
+      break;
+    default: {
+      gtk_button_set_label(GTK_BUTTON(button_02), "PM");
+    }
+      break;
+    }
+  }
+  else {
+    switch(result_02) {
+    case 0: {
+      gtk_button_set_label(GTK_BUTTON(button_01), "AM");
+    }
+      break;
+    default: {
+      ;
+    }
+      break;
+    }
+  }
 }

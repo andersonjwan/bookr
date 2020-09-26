@@ -2,6 +2,7 @@
 #define LOG_H
 
 #include "main.h"
+#include "bookr-time.h"
 
 struct Log {
   /* date */
@@ -34,4 +35,6 @@ void free_log(struct Log *);
 
 static void print_log(struct Log *);
 
+void swap_format(GtkButton *, gpointer);
+static void check_swap(GtkButton *);
 #endif
