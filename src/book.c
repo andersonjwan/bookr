@@ -19,7 +19,7 @@ new_book(GtkButton *button,
 
   active = create_book(GTK_WIDGET(data));
 
-  update_book_list(active->title);
+  update_book_list(active->title, active->path);
   hide_book_add(NULL, NULL);
 
   create_book_file();
@@ -87,7 +87,7 @@ create_book(GtkWidget *container)
   strncpy(new->calendar, data[10], size);
 
   new->log = NULL;
-  new->path = create_book_path(new->title);
+  new->path = create_book_path(new->ISBN, new->title);
 
   return new;
 }
@@ -96,7 +96,7 @@ static void
 create_book_file(void)
 {
   gchar *path;
-  path = create_book_path(active->title);
+  path = create_book_path(active->ISBN, active->title);
 
   /* create file */
   FILE *file;
@@ -111,6 +111,8 @@ select_book(GtkModelButton *button,
 {
   gchar *path;
   path = (gchar *) data;
+
+  printf("PATH: %s\n", path);
 
   if(active) {
     save_book_file();
@@ -165,23 +167,27 @@ free_book(void)
 }
 
 gchar *
-create_book_path(gchar *title)
+create_book_path(gchar *isbn, gchar *title)
 {
-  /* create file name */
-  gchar *prefix = getenv("HOME");
+  gchar *prefix, *subpath;
+  prefix  = getenv("HOME");
+  subpath = "/.local/share/bookr/data/";
 
+  gchar filename[strlen(isbn) + strlen(title) + 10];
+  sprintf(filename, "[%s] - %s.dat", isbn, title);
+
+  /* build path */
   gint size;
-  size = strlen(prefix) + strlen(title) + 1;
+  size = strlen(prefix) + strlen(subpath) + strlen(filename) + 1;
 
   gchar *path;
-  path = (gchar *) malloc(sizeof(path) * size);
+  path = (gchar *) malloc(sizeof(gchar) * size);
+
   strcpy(path, prefix);
+  strcat(path, subpath);
+  strcat(path, filename);
 
-  gchar name[(38 + strlen(title))];
-  snprintf(name, (strlen(title) + 38),
-           "/.local/share/bookr/data/Book - %s.data", title);
-  strncat(path, name, strlen(name));
-
+  printf("PATH: %s\n", path);
   return path;
 }
 

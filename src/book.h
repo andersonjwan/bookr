@@ -42,7 +42,7 @@ void select_book(GtkModelButton *, gpointer);
 static struct Book * select_book_file(gchar *);
 
 static void free_book(void);
-gchar * create_book_path(gchar *);
+gchar * create_book_path(gchar *, gchar *);
 
 static void print_book(void);
 
