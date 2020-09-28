@@ -12,8 +12,7 @@ write_book_calendar(void)
     file = fopen(active->calendar, "r+");
 
     if(!file) {
-      g_printerr("Error %d: Unable to open file: %s\n",
-                 1, active->calendar);
+      g_printerr("Error %d: Unable to open file: %s\n", 1, active->calendar);
       exit(1);
     }
 
