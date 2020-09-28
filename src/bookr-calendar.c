@@ -17,7 +17,6 @@ write_book_calendar(void)
       exit(1);
     }
 
-    gint count = 0;
     gchar character;
     long int new = 0, position;
 
