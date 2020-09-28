@@ -26,6 +26,7 @@ struct Book {
 
   /* log information */
   struct Log *log;      // book logs
+  guint count;          // book logs count
 
   /* save information */
   gchar *path;
