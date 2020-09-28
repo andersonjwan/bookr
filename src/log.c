@@ -9,11 +9,15 @@ new_log(GtkButton *button,
   active = get_book_active();
 
   if(active) {
+    active->count += 1;
+
     struct Log *new;
     new = create_log();
 
     insert_log(new);
     write_book_calendar();
+    save_book_file();
+
     print_log(new);
   }
 
@@ -75,7 +79,7 @@ create_log(void)
 
   /* transfer information */
   new->day   = day;
-  new->month = month;
+  new->month = month + 1;
   new->year  = year;
 
   new->start_hr  = convert_time(atoi(data[0]), data[2]);
@@ -91,6 +95,10 @@ create_log(void)
 
   new->note = (gchar *) malloc(sizeof(gchar) * size);
   strncpy(new->note, data[8], size);
+
+  /* log information */
+  new->number   = active->count;
+  new->calendar = 0;
 
   new->prev = NULL;
   new->next = NULL;
@@ -174,7 +182,7 @@ generate_log_uid(struct Log *log, gchar *result)
   struct Book *book;
   book = get_book_active();
 
-  sprintf(result, "%sL%05d@%s", book->isbn, 1, "com.github.andersonjwan.bookr");
+  sprintf(result, "%sL%05d@%s", book->isbn, log->number, "com.github.andersonjwan.bookr");
 }
 
 static void
