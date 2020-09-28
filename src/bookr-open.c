@@ -9,8 +9,21 @@ bookr_open(void)
 static void
 bookr_load_book_list(void)
 {
+  gchar *prefix, *subpath, *filename;
+
+  prefix   = getenv("HOME");
+  subpath  = "/.local/share/bookr/";
+  filename = "books-list.data";
+
+  gchar path[strlen(prefix) + strlen(subpath) + strlen(filename) + 1];
+  strcpy(path, prefix);
+  strcat(path, subpath);
+  strcat(path, filename);
+
+  printf("PATH: %s\n", path);
+
   FILE *file;
-  file = fopen("books-list.data", "r");
+  file = fopen(path, "r");
 
   if(file) {
     init_book_lexer(file);

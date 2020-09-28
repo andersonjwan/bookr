@@ -10,8 +10,19 @@ bookr_close(void)
 static void
 bookr_save_book_list(GList *list)
 {
+  gchar *prefix, *subpath, *filename;
+
+  prefix   = getenv("HOME");
+  subpath  = "/.local/share/bookr/";
+  filename = "books-list.data";
+
+  gchar path[strlen(prefix) + strlen(subpath) + strlen(filename) + 1];
+  strcpy(path, prefix);
+  strcat(path, subpath);
+  strcat(path, filename);
+
   FILE *file;
-  file = fopen("books-list.data", "w");
+  file = fopen(path, "w");
 
   GList *iter, *tmp;
 
