@@ -107,6 +107,10 @@ parse_book_information(void)
   strcpy(new->path, data);
   free(data);
 
+  data = parse_book_count();
+  new->count = atoi(data);
+  free(data);
+
   return new;
 }
 
@@ -242,6 +246,17 @@ parse_book_path(void)
   return token;
 }
 
+static gchar *
+parse_book_count(void)
+{
+  expect_key("LOGSCOUNT");
+
+  gchar *token;
+  token = get_value(NULL);
+
+  return token;
+}
+
 static struct Log *
 parse_book_log(void)
 {
@@ -315,6 +330,14 @@ parse_book_log_information(void)
 
   data = parse_book_log_end_page();
   new->end_pg = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_calendar();
+  new->calendar = atoi(data);
+  g_free(data);
+
+  data = parse_book_log_number();
+  new->calendar = atoi(data);
   g_free(data);
 
   data = parse_book_log_note();
@@ -417,6 +440,28 @@ static gchar *
 parse_book_log_end_page(void)
 {
   expect_key("ENDPAGE");
+
+  gchar *token;
+  token = get_value(";");
+
+  return token;
+}
+
+static gchar *
+parse_book_log_calendar(void)
+{
+  expect_key("CALENDAR");
+
+  gchar *token;
+  token = get_value(";");
+
+  return token;
+}
+
+static gchar *
+parse_book_log_number(void)
+{
+  expect_key("NUMBER");
 
   gchar *token;
   token = get_value(";");

@@ -23,6 +23,7 @@ static gchar * parse_book_print(void);
 static gchar * parse_book_cover(void);
 static gchar * parse_book_calendar(void);
 static gchar * parse_book_path(void);
+static gchar * parse_book_count(void);
 
 static struct Log * parse_book_log(void);
 static struct Log * parse_book_log_information(void);
@@ -36,6 +37,8 @@ static gchar * parse_book_log_end_hour(void);
 static gchar * parse_book_log_end_minute(void);
 static gchar * parse_book_log_start_page(void);
 static gchar * parse_book_log_end_page(void);
+static gchar * parse_book_log_calendar(void);
+static gchar * parse_book_log_number(void);
 static gchar * parse_book_log_note(void);
 
 #endif
