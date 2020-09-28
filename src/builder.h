@@ -10,6 +10,7 @@
 #include "log-add.h"
 
 #include "bookr-open.h"
+#include "bookr-calendar.h"
 
 extern GList *books;
 
