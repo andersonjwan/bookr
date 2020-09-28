@@ -137,7 +137,8 @@ select_book_file(gchar *path)
   file = fopen(path, "r");
 
   if(!file) {
-    fprintf(stderr, "Unable to open\n");
+    g_printerr("Error %d: Unable to open file: %s\n", 1, path);
+    exit(1);
   }
 
   book = parse_book_file(file);
