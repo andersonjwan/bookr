@@ -118,6 +118,8 @@ select_book(GtkModelButton *button,
   }
 
   active = select_book_file(path);
+
+  update_stacks(active);
   print_book();
 }
 
