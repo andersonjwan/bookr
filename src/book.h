@@ -4,6 +4,8 @@
 #include "main.h"
 #include "log.h"
 
+#include "bookr-stack.h"
+
 #include "book-save.h"
 #include "book-parser.h"
 
