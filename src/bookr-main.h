@@ -4,4 +4,6 @@
 #include <gtk/gtk.h>
 #include "bookr-builder.h"
 
+int main(int, char **);
+
 #endif
