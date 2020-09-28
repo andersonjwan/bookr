@@ -22,6 +22,10 @@ struct Log {
 
   gchar *note;          // log's note
 
+  /* log information */
+  guint number;
+  guint calendar;
+
   struct Log *prev;     // previous log
   struct Log *next;     // next log
 };
