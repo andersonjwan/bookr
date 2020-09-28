@@ -64,9 +64,11 @@
                         <property name="label" translatable="yes">Book Title</property>
                         <property name="justify">center</property>
                         <property name="wrap">True</property>
+                        <property name="ellipsize">end</property>
+                        <property name="lines">2</property>
                         <attributes>
                           <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="3"/>
+                          <attribute name="scale" value="2"/>
                         </attributes>
                       </object>
                       <packing>
@@ -82,9 +84,11 @@
                         <property name="label" translatable="yes">Authors</property>
                         <property name="justify">center</property>
                         <property name="wrap">True</property>
+                        <property name="ellipsize">end</property>
+                        <property name="lines">1</property>
                         <attributes>
                           <attribute name="style" value="italic"/>
-                          <attribute name="scale" value="1.25"/>
+                          <attribute name="scale" value="1"/>
                         </attributes>
                       </object>
                       <packing>
