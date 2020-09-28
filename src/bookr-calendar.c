@@ -12,7 +12,7 @@ write_book_calendar(void)
     file = fopen(active->calendar, "r+");
 
     if(!file) {
-      g_printerr("Error %02d: Unable to Read/Write File: %s\n",
+      g_printerr("Error %02d: Unable to open file: %s\n",
                  1, active->calendar);
       exit(1);
     }
