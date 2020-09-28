@@ -25,13 +25,16 @@ bookr_load_book_list(void)
   FILE *file;
   file = fopen(path, "r");
 
-  if(file) {
-    init_book_lexer(file);
-    bookr_parse_book_list();
-
-    reset_book_lexer();
-    fclose(file);
+  if(!file) {
+    g_printerr("Error %d: Unable to open file: %s\n", 1, path);
+    exit(1);
   }
+
+  init_book_lexer(file);
+  bookr_parse_book_list();
+
+  reset_book_lexer();
+  fclose(file);
 }
 
 static void

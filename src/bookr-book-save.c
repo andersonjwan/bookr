@@ -9,6 +9,11 @@ save_book_file(void)
   active = get_book_active();
   file = fopen(active->path, "w");
 
+  if(!file) {
+    g_printerr("Error %d: Unable to open file: %s\n", 1, active->path);
+    exit(1);
+  }
+
   write_book();
 
   /* close file */
