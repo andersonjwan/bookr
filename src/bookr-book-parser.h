@@ -2,7 +2,6 @@
 #define BOOKR_BOOK_PARSE_H
 
 #include "bookr-main.h"
-
 #include "bookr-book-lexer.h"
 
 /* forward declarations */
@@ -17,7 +16,7 @@ static gchar * parse_book_publisher(void);
 static gchar * parse_book_published(void);
 static gchar * parse_book_edition(void);
 static gchar * parse_book_language(void);
-static gchar * parse_book_ISBN(void);
+static gchar * parse_book_isbn(void);
 static gchar * parse_book_start_page(void);
 static gchar * parse_book_print(void);
 static gchar * parse_book_cover(void);

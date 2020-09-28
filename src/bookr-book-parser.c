@@ -29,13 +29,10 @@ parse_book(void)
   token = peek_key();
 
   if(strcmp(token, "LOG") == 0) {
-    free(token);
-
     new->log = parse_book_log();
   }
-  else {
-    free(token);
-  }
+
+  g_free(token);
 
   expect_key("BOOK");
   expect_value("END", NULL);
@@ -79,37 +76,37 @@ parse_book_information(void)
   strcpy(new->language, data);
   g_free(data);
 
-  data = parse_book_ISBN();
+  data = parse_book_isbn();
   new->isbn = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
   strcpy(new->isbn, data);
-  free(data);
+  g_free(data);
 
   data = parse_book_start_page();
   new->start = atoi(data);
-  free(data);
+  g_free(data);
 
   data = parse_book_print();
   new->pages = atoi(data);
-  free(data);
+  g_free(data);
 
   data = parse_book_cover();
   new->cover = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
   strcpy(new->cover, data);
-  free(data);
+  g_free(data);
 
   data = parse_book_calendar();
   new->calendar = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
   strcpy(new->calendar, data);
-  free(data);
+  g_free(data);
 
   data = parse_book_path();
   new->path = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
   strcpy(new->path, data);
-  free(data);
+  g_free(data);
 
   data = parse_book_count();
   new->count = atoi(data);
-  free(data);
+  g_free(data);
 
   return new;
 }
@@ -181,7 +178,7 @@ parse_book_language(void)
 }
 
 static gchar *
-parse_book_ISBN(void)
+parse_book_isbn(void)
 {
   expect_key("ISBN");
 
@@ -276,8 +273,6 @@ parse_book_log(void)
   token = peek_key();
 
   if(strcmp(token, "LOG") == 0) {
-    g_free(token);
-
     struct Log *tmp;
     tmp = parse_book_log();
 
@@ -285,6 +280,7 @@ parse_book_log(void)
     tmp->prev = new;
   }
 
+  g_free(token);
   return new;
 }
 
