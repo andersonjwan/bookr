@@ -41,6 +41,7 @@ write_book_information(void)
   fprintf(file, "COVERPATH:%s\n",   active->cover);
   fprintf(file, "ICALPATH:%s\n",    active->calendar);
   fprintf(file, "FILEPATH:%s\n",    active->path);
+  fprintf(file, "LOGSCOUNT:%05d\n", active->count);
 }
 
 static void
@@ -72,6 +73,8 @@ write_log(struct Log *log)
   fprintf(file, "STARTPAGE:%05d;", log->start_pg);
   fprintf(file, "ENDPAGE:%05d\n", log->end_pg);
 
+  fprintf(file, "CALENDAR:%02d\n", log->calendar);
+  fprintf(file, "NUMBER:%02d\n", log->number);
   fprintf(file, "NOTES:%s\n", log->note);
 
   fprintf(file, "LOG:END\n");
