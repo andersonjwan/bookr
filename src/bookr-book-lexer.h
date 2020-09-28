@@ -3,8 +3,6 @@
 
 #include "bookr-main.h"
 
-#include "bookr-book-parser.h"
-
 /* forward declarations */
 void init_book_lexer(FILE *);
 void reset_book_lexer(void);

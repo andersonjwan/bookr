@@ -28,7 +28,7 @@ expect_key(gchar *expected)
     exit(3);
   }
 
-  free(key);
+  g_free(key);
 }
 
 void
@@ -44,6 +44,8 @@ expect_value(gchar *expected, gchar *delimeter)
     g_printerr("Read: %s\n", value);
     exit(3);
   }
+
+  g_free(value);
 }
 
 gchar *
@@ -57,7 +59,7 @@ get_key(void)
   buffer = (gchar *) malloc(sizeof(gchar) * size);
 
   /* test allocated pointer */
-  if(buffer == NULL) {
+  if(!buffer) {
     g_printerr("Memory Allocation Error: Insufficient Memory\n");
     exit(1);
   }
@@ -74,7 +76,7 @@ get_key(void)
       /* re-allocate more memory */
       buffer = realloc(buffer, size);
 
-      if(buffer == NULL) {
+      if(!buffer) {
         g_printerr("Memory Re-Allocation Error: Insufficient Memory\n");
         exit(2);
       }
@@ -105,7 +107,7 @@ get_value(gchar *delimeter)
   buffer = (gchar *) malloc(sizeof(gchar) * size);
 
   /* test allocated pointer */
-  if(buffer == NULL) {
+  if(!buffer) {
     g_printerr("Memory Allocation Error: Insufficient Memory\n");
     exit(1);
   }
@@ -123,7 +125,7 @@ get_value(gchar *delimeter)
       /* re-allocate more memory */
       buffer = realloc(buffer, size);
 
-      if(buffer == NULL) {
+      if(!buffer) {
         g_printerr("Memory Re-Allocation Error: Insufficient Memory\n");
         exit(2);
       }
@@ -144,7 +146,8 @@ get_value(gchar *delimeter)
 }
 
 void
-unget_key(gchar *key) {
+unget_key(gchar *key)
+{
   gint index;
   index = strlen(key) - 1;
 
@@ -156,7 +159,8 @@ unget_key(gchar *key) {
 }
 
 void
-unget_value(gchar *value) {
+unget_value(gchar *value)
+{
   gint index;
   index = strlen(value) - 1;
 
@@ -178,7 +182,7 @@ peek_key(void)
   buffer = (gchar *) malloc(sizeof(gchar) * size);
 
   /* test allocated pointer */
-  if(buffer == NULL) {
+  if(!buffer) {
     g_printerr("Memory Allocation Error: Insufficient Memory\n");
     exit(1);
   }
@@ -195,7 +199,7 @@ peek_key(void)
       /* re-allocate more memory */
       buffer = realloc(buffer, size);
 
-      if(buffer == NULL) {
+      if(!buffer) {
         g_printerr("Memory Re-Allocation Error: Insufficient Memory\n");
         exit(2);
       }
@@ -229,7 +233,7 @@ peek_value(void)
   buffer = (gchar *) malloc(sizeof(gchar) * size);
 
   /* test allocated pointer */
-  if(buffer == NULL) {
+  if(!buffer) {
     g_printerr("Memory Allocation Error: Insufficient Memory\n");
     exit(1);
   }
@@ -246,7 +250,7 @@ peek_value(void)
       /* re-allocate more memory */
       buffer = realloc(buffer, size);
 
-      if(buffer == NULL) {
+      if(!buffer) {
         g_printerr("Memory Re-Allocation Error: Insufficient Memory\n");
         exit(2);
       }
@@ -272,7 +276,7 @@ peek_value(void)
 static gint
 test_delimeter(gchar character, gchar *delimeter)
 {
-  if(delimeter == NULL) {
+  if(!delimeter) {
     return 1;
   }
   else {
