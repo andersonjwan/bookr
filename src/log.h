@@ -37,4 +37,6 @@ static void print_log(struct Log *);
 
 void swap_format(GtkButton *, gpointer);
 static void check_swap(GtkButton *);
+
+void generate_log_uid(struct Log *, gchar *);
 #endif

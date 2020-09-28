@@ -13,6 +13,7 @@ new_log(GtkButton *button,
     new = create_log();
 
     insert_log(new);
+    write_book_calendar();
     print_log(new);
   }
 
@@ -165,6 +166,15 @@ swap_format(GtkButton *button,
   }
 
   check_swap(button);
+}
+
+void
+generate_log_uid(struct Log *log, gchar *result)
+{
+  struct Book *book;
+  book = get_book_active();
+
+  sprintf(result, "%sL%05d@%s", book->isbn, 1, "com.github.andersonjwan.bookr");
 }
 
 static void
