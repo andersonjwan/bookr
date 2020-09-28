@@ -1,8 +1,8 @@
 #ifndef BOOKR_OPEN_H
 #define BOOKR_OPEN_H
 
-#include "main.h"
-#include "book-lexer.h"
+#include "bookr-main.h"
+#include "bookr-book-lexer.h"
 
 /* forward declaration(s) */
 void bookr_open(void);

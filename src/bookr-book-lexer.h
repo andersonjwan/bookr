@@ -1,9 +1,9 @@
-#ifndef BOOK_LEXER_H
-#define BOOK_LEXER_H
+#ifndef BOOKR_BOOK_LEXER_H
+#define BOOKR_BOOK_LEXER_H
 
-#include "main.h"
+#include "bookr-main.h"
 
-#include "book-parser.h"
+#include "bookr-book-parser.h"
 
 /* forward declarations */
 void init_book_lexer(FILE *);

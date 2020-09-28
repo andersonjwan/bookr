@@ -1,7 +1,7 @@
-#ifndef LOG_ADD_H
-#define LOG_ADD_H
+#ifndef BOOKR_LOG_ADD_H
+#define BOOKR_LOG_ADD_H
 
-#include "builder.h"
+#include "bookr-builder.h"
 
 /* forward declarations */
 GtkBuilder * get_log_add_builder(void);

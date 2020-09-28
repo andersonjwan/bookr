@@ -1,13 +1,13 @@
-#ifndef BUILDER_H
-#define BUILDER_H
+#ifndef BOOKR_BUILDER_H
+#define BOOKR_BUILDER_H
 
-#include "main.h"
+#include "bookr-main.h"
 
-#include "book.h"
-#include "book-add.h"
-#include "book-edit.h"
+#include "bookr-book.h"
+#include "bookr-book-add.h"
+#include "bookr-book-edit.h"
 
-#include "log-add.h"
+#include "bookr-log-add.h"
 
 #include "bookr-open.h"
 #include "bookr-calendar.h"

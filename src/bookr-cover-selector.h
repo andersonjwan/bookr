@@ -1,7 +1,7 @@
-#ifndef COVER_SELECTOR_H
-#define COVER_SELECTOR_H
+#ifndef BOOKR_COVER_SELECTOR_H
+#define BOOKR_COVER_SELECTOR_H
 
-#include "builder.h"
+#include "bookr-builder.h"
 
 /* forward declarations */
 void show_cover_selector(GtkEntry  *, gpointer);

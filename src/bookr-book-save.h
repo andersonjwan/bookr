@@ -1,10 +1,10 @@
-#ifndef BOOK_SAVE_H
-#define BOOK_SAVE_H
+#ifndef BOOKR_BOOK_SAVE_H
+#define BOOKR_BOOK_SAVE_H
 
-#include "main.h"
+#include "bookr-main.h"
 
-#include "book.h"
-#include "log.h"
+#include "bookr-book.h"
+#include "bookr-log.h"
 
 /* forward declarations */
 struct Log;

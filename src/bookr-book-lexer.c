@@ -1,4 +1,4 @@
-#include "book-lexer.h"
+#include "bookr-book-lexer.h"
 
 static FILE *input = NULL;
 

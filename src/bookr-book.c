@@ -1,4 +1,4 @@
-#include "book.h"
+#include "bookr-book.h"
 
 static struct Book *active = NULL;
 

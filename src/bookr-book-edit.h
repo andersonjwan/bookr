@@ -1,7 +1,7 @@
-#ifndef BOOK_EDIT_H
-#define BOOK_EDIT_H
+#ifndef BOOKR_BOOK_EDIT_H
+#define BOOKR_BOOK_EDIT_H
 
-#include "builder.h"
+#include "bookr-builder.h"
 
 /* forward declarations */
 void show_book_edit(void);

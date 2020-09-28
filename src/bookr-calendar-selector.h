@@ -1,7 +1,7 @@
-#ifndef CALENDAR_SELECTOR_H
-#define CALENDAR_SELECTOR_H
+#ifndef BOOKR_CALENDAR_SELECTOR_H
+#define BOOKR_CALENDAR_SELECTOR_H
 
-#include "builder.h"
+#include "bookr-builder.h"
 
 /* forward declarations */
 void show_calendar_selector(GtkEntry  *, gpointer);

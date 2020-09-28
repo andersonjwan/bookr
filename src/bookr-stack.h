@@ -1,10 +1,10 @@
 #ifndef BOOKR_STACK_H
 #define BOOKR_STACK_H
 
-#include "main.h"
-#include "builder.h"
+#include "bookr-main.h"
+#include "bookr-builder.h"
 
-#include "book.h"
+#include "bookr-book.h"
 
 /* forward declarations */
 struct Book;

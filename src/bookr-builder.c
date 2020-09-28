@@ -1,4 +1,4 @@
-#include "builder.h"
+#include "bookr-builder.h"
 
 static GtkApplication *bookr   = NULL;
 static GtkBuilder     *builder = NULL;

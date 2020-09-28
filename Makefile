@@ -1,5 +1,5 @@
 all:
-	gcc -rdynamic `pkg-config --cflags gtk+-3.0` ./src/main.c ./src/builder.c ./src/book-add.c ./src/book-edit.c ./src/log-add.c ./src/cover-selector.c ./src/calendar-selector.c ./src/book.c ./src/log.c ./src/book-save.c ./src/book-lexer.c ./src/book-parser.c ./src/bookr-close.c ./src/bookr-open.c ./src/bookr-time.c ./src/bookr-calendar.c ./src/bookr-stack.c --output ./build/bookr.out `pkg-config --libs gtk+-3.0`
+	gcc -rdynamic `pkg-config --cflags gtk+-3.0` ./src/bookr-main.c ./src/bookr-builder.c ./src/bookr-book-add.c ./src/bookr-book-edit.c ./src/bookr-log-add.c ./src/bookr-cover-selector.c ./src/bookr-calendar-selector.c ./src/bookr-book.c ./src/bookr-log.c ./src/bookr-book-save.c ./src/bookr-book-lexer.c ./src/bookr-book-parser.c ./src/bookr-close.c ./src/bookr-open.c ./src/bookr-time.c ./src/bookr-calendar.c ./src/bookr-stack.c --output ./build/bookr.out `pkg-config --libs gtk+-3.0`
 	mkdir -p /$$HOME/.local/share/bookr/data/
 
 install:

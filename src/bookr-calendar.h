@@ -1,9 +1,9 @@
 #ifndef BOOKR_CALENDAR_H
 #define BOOKR_CALENDAR_H
 
-#include "main.h"
-#include "book.h"
-#include "log.h"
+#include "bookr-main.h"
+#include "bookr-book.h"
+#include "bookr-log.h"
 
 /* forward declarations */
 void write_book_calendar(void);

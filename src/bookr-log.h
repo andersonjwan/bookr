@@ -1,7 +1,7 @@
-#ifndef LOG_H
-#define LOG_H
+#ifndef BOOKR_LOG_H
+#define BOOKR_LOG_H
 
-#include "main.h"
+#include "bookr-main.h"
 #include "bookr-time.h"
 
 struct Log {

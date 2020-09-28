@@ -1,4 +1,4 @@
-#include "log.h"
+#include "bookr-log.h"
 
 static struct Book *active = NULL;
 

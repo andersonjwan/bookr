@@ -1,9 +1,9 @@
-#ifndef BOOK_PARSE_H
-#define BOOK_PARSE_H
+#ifndef BOOKR_BOOK_PARSE_H
+#define BOOKR_BOOK_PARSE_H
 
-#include "main.h"
+#include "bookr-main.h"
 
-#include "book-lexer.h"
+#include "bookr-book-lexer.h"
 
 /* forward declarations */
 struct Book * parse_book_file(FILE *);

@@ -1,13 +1,13 @@
-#ifndef BOOK_H
-#define BOOK_H
+#ifndef BOOKR_BOOK_H
+#define BOOKR_BOOK_H
 
-#include "main.h"
-#include "log.h"
+#include "bookr-main.h"
+#include "bookr-log.h"
 
 #include "bookr-stack.h"
 
-#include "book-save.h"
-#include "book-parser.h"
+#include "bookr-book-save.h"
+#include "bookr-book-parser.h"
 
 struct Book {
   /* book information */

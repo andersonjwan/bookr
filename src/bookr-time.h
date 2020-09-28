@@ -1,9 +1,9 @@
 #ifndef BOOKR_TIME_H
 #define BOOKR_TIME_H
 
-#include "main.h"
-#include "book.h"
-#include "log.h"
+#include "bookr-main.h"
+#include "bookr-book.h"
+#include "bookr-log.h"
 
 /* forward declarations */
 struct Log;

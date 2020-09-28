@@ -1,4 +1,4 @@
-#include "main.h"
+#include "bookr-main.h"
 
 gint
 main(gint argc, gchar **argv)

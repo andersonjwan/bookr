@@ -1,4 +1,4 @@
-#include "log-add.h"
+#include "bookr-log-add.h"
 
 static GtkBuilder *builder = NULL;
 static GtkWindow  *dialog  = NULL;

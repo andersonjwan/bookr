@@ -1,8 +1,8 @@
 #ifndef BOOKR_CLOSE_H
 #define BOOKR_CLOSE_H
 
-#include "main.h"
-#include "builder.h"
+#include "bookr-main.h"
+#include "bookr-builder.h"
 
 /* forward declaration(s) */
 void bookr_close(void);
