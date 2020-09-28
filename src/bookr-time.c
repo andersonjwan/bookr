@@ -20,3 +20,16 @@ convert_time(guint hour, const gchar *label)
     break;
   }
 }
+
+void
+generate_date_time_format_start(struct Log *log, gchar *result)
+{
+  sprintf(result, "%04d%02d%02dT%02d%02d00",
+          log->year, log->month, log->day, log->start_hr, log->start_min);
+}
+
+void generate_date_time_format_end(struct Log *log, gchar *result)
+{
+  sprintf(result, "%04d%02d%02dT%02d%02d00",
+          log->year, log->month, log->day, log->end_hr, log->end_min);
+}
