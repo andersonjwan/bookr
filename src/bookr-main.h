@@ -4,6 +4,7 @@
 #include <gtk/gtk.h>
 #include "bookr-builder.h"
 
+/* forward declaration(s) */
 int main(int, char **);
 
 #endif
