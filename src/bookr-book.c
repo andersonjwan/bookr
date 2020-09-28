@@ -102,6 +102,11 @@ create_book_file(void)
   FILE *file;
   file = fopen(path, "w");
 
+  if(!file) {
+    g_printerr("Error %d: Unable to open file: %s\n", 1, path);
+    exit(1);
+  }
+
   fclose(file);
 }
 
