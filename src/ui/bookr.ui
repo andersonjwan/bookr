@@ -89,6 +89,7 @@
                         <attributes>
                           <attribute name="style" value="italic"/>
                           <attribute name="scale" value="1"/>
+                          <attribute name="foreground" value="#88888a8a8585"/>
                         </attributes>
                       </object>
                       <packing>
