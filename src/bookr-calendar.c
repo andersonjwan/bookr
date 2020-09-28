@@ -11,39 +11,43 @@ write_book_calendar(void)
   if(active) {
     file = fopen(active->calendar, "r+");
 
-    if(file) {
-      gint count = 0;
-      gchar character;
-      long int new = 0, position;
-
-      do {
-        character = getc(file);
-
-        if(character == '\n') {
-          position = new;
-          new = ftell(file);
-        }
-      }
-      while(character != EOF);
-
-      fseek(file, position, SEEK_SET);
-
-      struct Log *curr;
-      curr = active->log;
-
-      while(curr) {
-        if(!(curr->calendar)) {
-          calendar_write_event(curr);
-          curr->calendar = TRUE;
-        }
-
-        /* next log */
-        curr = curr->next;
-      }
-
-      fprintf(file, "END:VCALENDAR\n");
-      fclose(file);
+    if(!file) {
+      g_printerr("Error %02d: Unable to Read/Write File: %s\n",
+                 1, active->calendar);
+      exit(1);
     }
+
+    gint count = 0;
+    gchar character;
+    long int new = 0, position;
+
+    do {
+      character = getc(file);
+
+      if(character == '\n') {
+        position = new;
+        new = ftell(file);
+      }
+    }
+    while(character != EOF);
+
+    fseek(file, position, SEEK_SET);
+
+    struct Log *curr;
+    curr = active->log;
+
+    while(curr) {
+      if(!(curr->calendar)) {
+        calendar_write_event(curr);
+        curr->calendar = TRUE;
+      }
+
+      /* next log */
+      curr = curr->next;
+    }
+
+    fprintf(file, "END:VCALENDAR\n");
+    fclose(file);
   }
 }
 static void
