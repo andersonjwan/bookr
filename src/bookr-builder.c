@@ -26,8 +26,6 @@ activate(GtkApplication *app,
   GtkWindow *window;
   window = GTK_WINDOW(get_widget(builder, "bookr-window-main"));
 
-  bookr_open();
-
   gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(window));
   gtk_widget_show_all(GTK_WIDGET(window));
 }
