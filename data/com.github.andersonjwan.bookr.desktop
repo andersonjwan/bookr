@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bookr
+Comment=Track reading habits and books
+Exec=com.github.andersonjwan.bookr
+Terminal=false
+Type=Application
+Icon=bookr
+Categories=Reading;Books;Journal
+StartupNotify=true
