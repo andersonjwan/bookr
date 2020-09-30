@@ -13,4 +13,9 @@ void update_stacks(struct Book *);
 
 static void update_log_stack(struct Book *);
 static void update_log_stack_header(struct Book *);
+
+static void update_book_stack(struct Book *);
+static void update_book_stack_log_list(struct Book *);
+static void update_book_stack_log_list_clear(GtkWidget *);
+static void update_book_stack_log_list_build(GtkWidget *, struct Book *);
 #endif
