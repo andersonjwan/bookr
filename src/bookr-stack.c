@@ -1,6 +1,7 @@
 #include "bookr-stack.h"
 
 static GtkBuilder *builder;
+static GdkPixbuf  *pxbuf = NULL;
 
 void
 update_stacks(struct Book *book)
@@ -36,7 +37,31 @@ update_log_stack_header(struct Book *book)
 static void
 update_book_stack(struct Book *book)
 {
+  update_book_stack_information(book);
   update_book_stack_log_list(book);
+}
+
+static void
+update_book_stack_information(struct Book *book)
+{
+  update_book_stack_information_cover(book);
+}
+
+static void
+update_book_stack_information_cover(struct Book *book)
+{
+  GtkWidget *image;
+  image = get_widget(builder, "bookr-main-stack-books-info-cover-image");
+
+  if(pxbuf) {
+    g_object_unref(G_OBJECT(pxbuf));
+  }
+
+  GError    *error = NULL;
+  pxbuf = gdk_pixbuf_new_from_file_at_size(book->cover,
+                                           320, -1, &error);
+
+  gtk_image_set_from_pixbuf(GTK_IMAGE(image), GDK_PIXBUF(pxbuf));
 }
 
 static void
