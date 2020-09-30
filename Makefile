@@ -10,3 +10,4 @@ install:
 	cp ./src/ui/bookr-log-add.ui /usr/share/bookr/gui/
 	cp ./src/ui/bookr-cover-selector.ui /usr/share/bookr/gui
 	cp ./src/ui/bookr-calendar-selector.ui /usr/share/bookr/gui
+	cp ./data/covers/default-cover.jpg /usr/share/bookr/gui
