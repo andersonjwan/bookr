@@ -45,6 +45,7 @@ static void
 update_book_stack_information(struct Book *book)
 {
   update_book_stack_information_cover(book);
+  update_book_stack_information_header(book);
 }
 
 static void
@@ -62,6 +63,19 @@ update_book_stack_information_cover(struct Book *book)
                                            320, -1, &error);
 
   gtk_image_set_from_pixbuf(GTK_IMAGE(image), GDK_PIXBUF(pxbuf));
+}
+
+static void
+update_book_stack_information_header(struct Book *book)
+{
+  GtkWidget *widget;
+  widget = get_widget(builder,
+                      "bookr-main-stack-books-info-details-header-title-label");
+  gtk_label_set_text(GTK_LABEL(widget), book->title);
+
+  widget = get_widget(builder,
+                      "bookr-main-stack-books-info-details-header-author-label");
+  gtk_label_set_text(GTK_LABEL(widget), book->author);
 }
 
 static void
