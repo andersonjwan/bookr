@@ -55,8 +55,6 @@ update_book_stack_log_list(struct Book *book)
 static void
 update_book_stack_log_list_clear(GtkWidget *list)
 {
-  printf("[enter] update_book_stack_log_list_clear\n");
-
   GList *child, *iter;
   child = gtk_container_get_children(GTK_CONTAINER(list));
   iter = child;
@@ -67,15 +65,11 @@ update_book_stack_log_list_clear(GtkWidget *list)
   }
 
   g_list_free(g_steal_pointer(&child));
-
-  printf("[exit] update_book_stack_log_list_clear\n");
 }
 
 static void
 update_book_stack_log_list_build(GtkWidget *list, struct Book *book)
 {
-  printf("[enter] update_book_stack_log_list_build\n");
-
   struct Log *iter;
   iter = book->log;
 
