@@ -19,6 +19,7 @@ static void update_book_stack(struct Book *);
 static void update_book_stack_information(struct Book *);
 static void update_book_stack_information_cover(struct Book *);
 static void update_book_stack_information_header(struct Book *);
+static void update_book_stack_information_attributes(struct Book *);
 
 static void update_book_stack_log_list(struct Book *);
 static void update_book_stack_log_list_clear(GtkWidget *);
