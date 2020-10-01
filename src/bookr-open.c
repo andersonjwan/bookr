@@ -4,6 +4,9 @@ void
 bookr_open(void)
 {
   bookr_load_book_list();
+  if(books) {
+    select_book(NULL, ((gchar **) (books->data))[1]);
+  }
 }
 
 static void
