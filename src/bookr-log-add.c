@@ -18,6 +18,8 @@ show_log_add(void)
   }
 
   dialog = get_dialog(builder, "bookr-log-add-dialog");
+  autofill_log_add();
+
   gtk_widget_show_all(GTK_WIDGET(dialog));
 }
 
@@ -63,4 +65,41 @@ clear_log_add(void)
   object = gtk_builder_get_object(GTK_BUILDER(builder),
                                   "bookr-log-add-notes-text-buffer");
   gtk_text_buffer_set_text(GTK_TEXT_BUFFER(object), "", 0);
+}
+
+static void
+autofill_log_add(void)
+{
+  autofill_log_add_calendar();
+  autofill_log_add_start_page();
+}
+
+static void
+autofill_log_add_calendar(void)
+{
+  GtkWidget *calendar;
+  calendar = get_widget(builder, "bookr-log-add-calendar-calendar");
+
+  /* get current date */
+  int day, month, year;
+  get_current_date(&day, &month, &year);
+
+  /* set calendar date */
+  gtk_calendar_select_day(GTK_CALENDAR(calendar), day);
+  gtk_calendar_select_month(GTK_CALENDAR(calendar), month, year);
+}
+
+static void
+autofill_log_add_start_page(void)
+{
+  guint page;
+  page = bookr_stats_get_current_page(get_book_active());
+
+  GtkWidget *entry;
+  entry = get_widget(builder, "bookr-log-add-pages-entry-start-page");
+
+  gchar data[5];
+  sprintf(data, "%d", page);
+
+  gtk_entry_set_text(GTK_ENTRY(entry), data);
 }
