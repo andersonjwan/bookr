@@ -175,20 +175,20 @@ update_book_stack_log_list_build(GtkWidget *list, struct Book *book)
 static GtkWidget *
 update_book_stack_log_list_build_item(struct Book *book, struct Log *log)
 {
-  GtkWidget *child;
-  child = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
-  gtk_container_set_border_width(GTK_CONTAINER(child), 10);
+  GtkWidget *item;
+  item = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+  gtk_container_set_border_width(GTK_CONTAINER(item), 5);
 
-  GtkWidget *header_box, *data_box;
-  header_box = update_book_stack_log_list_build_item_header(log);
-  data_box   = update_book_stack_log_list_build_item_data(book, log);
+  GtkWidget *header, *content;
+  header  = update_book_stack_log_list_build_item_header(log);
+  content = update_book_stack_log_list_build_item_content(log);
 
-  gtk_box_pack_start(GTK_BOX(child), GTK_WIDGET(header_box),
+  gtk_box_pack_start(GTK_BOX(item), GTK_WIDGET(header),
                      FALSE, FALSE, 0);
-  gtk_box_pack_start(GTK_BOX(child), GTK_WIDGET(data_box),
+  gtk_box_pack_start(GTK_BOX(item), GTK_WIDGET(content),
                      FALSE, FALSE, 0);
 
-  return child;
+  return item;
 }
 
 static GtkWidget *
@@ -197,115 +197,81 @@ update_book_stack_log_list_build_item_header(struct Log *log)
   GtkWidget *box;
   box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 5);
 
-  GtkWidget *label_01, *label_02;
+  GtkWidget *label_01, *label_02, *label_03;
 
-  gchar data_01[strlen("Log No. #####") + 1];
-  sprintf(data_01, "Log No. %05d", log->number);
+  gchar data_01[strlen("Log ######") + 1];
+  sprintf(data_01, "Log #%05d", log->number);
   label_01 = gtk_label_new(data_01);
 
-  gchar data_02[strlen("##/##/####") + 1];
-  sprintf(data_02, "%02d/%02d/%04d", log->month, log->day, log->year);
+  gchar data_02[strlen("Last Modifed: ##/##/####") + 1];
+  sprintf(data_02, "Last Modified: %02d/%02d/%04d", log->month, log->day, log->year);
   label_02 = gtk_label_new(data_02);
 
   /* attributes */
-  PangoAttrList *attributes;
-  attributes = pango_attr_list_new();
+  PangoAttrList *log_attr, *mod_attr;
+  log_attr = pango_attr_list_new();
+  mod_attr = pango_attr_list_new();
 
-  PangoAttribute *attr_01, *attr_02, *attr_03;
-  attr_01 = pango_attr_style_new(PANGO_STYLE_ITALIC);
-  attr_02 = pango_attr_scale_new(0.75);
-  attr_03 = pango_attr_foreground_new(186 * 257, 189 * 257, 182 * 257);
+  PangoAttribute *log_01;
+  log_01 = pango_attr_weight_new(PANGO_WEIGHT_SEMIBOLD);
 
-  pango_attr_list_insert(attributes, attr_01);
-  pango_attr_list_insert(attributes, attr_02);
-  pango_attr_list_insert(attributes, attr_03);
+  PangoAttribute *mod_01, *mod_02, *mod_03;
+  mod_01 = pango_attr_style_new(PANGO_STYLE_ITALIC);
+  mod_02 = pango_attr_scale_new(0.85);
+  mod_03 = pango_attr_foreground_new(186 * 257, 189 * 257, 182 * 257);
+
+  pango_attr_list_insert(log_attr, log_01);
+
+  pango_attr_list_insert(mod_attr, mod_01);
+  pango_attr_list_insert(mod_attr, mod_02);
+  pango_attr_list_insert(mod_attr, mod_03);
 
   /* apply attributes */
-  gtk_label_set_attributes(GTK_LABEL(label_01), attributes);
-  gtk_label_set_attributes(GTK_LABEL(label_02), attributes);
+  gtk_label_set_attributes(GTK_LABEL(label_01), log_attr);
+  gtk_label_set_attributes(GTK_LABEL(label_02), mod_attr);
 
-  pango_attr_list_unref(attributes);
+  pango_attr_list_unref(log_attr);
+  pango_attr_list_unref(mod_attr);
 
   gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label_01),
                      FALSE, FALSE, 0);
   gtk_box_pack_end(GTK_BOX(box), GTK_WIDGET(label_02),
                    FALSE, FALSE, 0);
 
+  //  update_book_stack_log_list_build_item_data(box, log);
+
   return box;
 }
 
 static GtkWidget *
-update_book_stack_log_list_build_item_data(struct Book *book, struct Log *log)
+update_book_stack_log_list_build_item_content(struct Log *log)
 {
   GtkWidget *box;
   box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 5);
 
-  GtkWidget *box_labels, *box_content;
-  box_labels  = update_book_stack_log_list_build_item_data_labels();
-  box_content = update_book_stack_log_list_build_item_data_contents(book, log);
-
-  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(box_labels),
-                     FALSE, FALSE, 0);
-  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(box_content),
-                     FALSE, FALSE, 0);
-
-  return box;
-}
-
-static GtkWidget *
-update_book_stack_log_list_build_item_data_labels(void)
-{
-  GtkWidget *box;
-  box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
-
-  PangoAttrList *attributes;
-  attributes = pango_attr_list_new();
-
-  PangoAttribute *attr_01;
-  attr_01 = pango_attr_weight_new(PANGO_WEIGHT_SEMIBOLD);
-
-  pango_attr_list_insert(attributes, attr_01);
-
   GtkWidget *label;
-  label = gtk_label_new("Date:");
-  gtk_label_set_xalign(GTK_LABEL(label), 0);
-  gtk_label_set_attributes(GTK_LABEL(label), attributes);
+
+  gchar content[strlen("##/##/####, ##### - #####") + 1];
+  sprintf(content, "%02d/%02d/%04d, %05d - %05d", log->month, log->day, log->year,
+          log->start_pg, log->end_pg);
+  label = gtk_label_new(content);
+
+  PangoAttrList *content_attr;
+  content_attr = pango_attr_list_new();
+
+  PangoAttribute *attr_01, *attr_02;
+  attr_01 = pango_attr_scale_new(0.75);
+  attr_02 = pango_attr_style_new(PANGO_STYLE_ITALIC);
+
+  pango_attr_list_insert(content_attr, attr_01);
+  pango_attr_list_insert(content_attr, attr_02);
+
+  gtk_label_set_attributes(GTK_LABEL(label), content_attr);
+
+  pango_attr_list_unref(content_attr);
+
   gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
                      FALSE, FALSE, 0);
-
-  label = gtk_label_new("Start Time:");
-  gtk_label_set_attributes(GTK_LABEL(label), attributes);
-  gtk_label_set_xalign(GTK_LABEL(label), 0);
-  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
-                     FALSE, FALSE, 0);
-
-  label = gtk_label_new("End Time:");
-  gtk_label_set_xalign(GTK_LABEL(label), 0);
-  gtk_label_set_attributes(GTK_LABEL(label), attributes);
-  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
-                     FALSE, FALSE, 0);
-
-  label = gtk_label_new("Start Page:");
-  gtk_label_set_xalign(GTK_LABEL(label), 0);
-  gtk_label_set_attributes(GTK_LABEL(label), attributes);
-  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
-                     FALSE, FALSE, 0);
-
-  label = gtk_label_new("End Page:");
-  gtk_label_set_xalign(GTK_LABEL(label), 0);
-  gtk_label_set_attributes(GTK_LABEL(label), attributes);
-  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
-                     FALSE, FALSE, 0);
-
-  pango_attr_list_unref(attributes);
-  return box;
-}
-
-static GtkWidget *
-update_book_stack_log_list_build_item_data_contents(struct Book *book, struct Log *log)
-{
-  GtkWidget *box;
-  box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
 
   return box;
 }
