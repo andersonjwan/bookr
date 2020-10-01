@@ -19,7 +19,7 @@ new_log(GtkButton *button,
     save_book_file();
 
     update_stacks(active);
-    
+
     print_log(new);
   }
 
