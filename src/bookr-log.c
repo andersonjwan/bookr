@@ -18,6 +18,8 @@ new_log(GtkButton *button,
     write_book_calendar();
     save_book_file();
 
+    update_stacks(active);
+    
     print_log(new);
   }
 
