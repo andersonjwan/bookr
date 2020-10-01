@@ -22,6 +22,20 @@ convert_time(guint hour, const gchar *label)
 }
 
 void
+get_current_date(guint *day, guint *month, guint *year)
+{
+  time_t rawtime;
+  struct tm *timeinfo;
+
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+
+  *day   = timeinfo->tm_mday;
+  *month = timeinfo->tm_mon;
+  *year  = timeinfo->tm_year + 1900;
+}
+
+void
 generate_date_time_format_start(struct Log *log, gchar *result)
 {
   sprintf(result, "%04d%02d%02dT%02d%02d00",

@@ -10,6 +10,8 @@ struct Log;
 
 guint convert_time(guint, const gchar *);
 
+void get_current_date(guint *, guint *, guint *);
+
 void generate_date_time_format_start(struct Log *, gchar *);
 void generate_date_time_format_end(struct Log *, gchar *);
 
