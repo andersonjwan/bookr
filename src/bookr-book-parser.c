@@ -333,7 +333,7 @@ parse_book_log_information(void)
   g_free(data);
 
   data = parse_book_log_number();
-  new->calendar = atoi(data);
+  new->number = atoi(data);
   g_free(data);
 
   data = parse_book_log_note();
