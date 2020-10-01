@@ -9,7 +9,7 @@ new_log(GtkButton *button,
   active = get_book_active();
 
   if(active) {
-    active->count += 1;
+    ++(active->count);
 
     struct Log *new;
     new = create_log();
@@ -102,6 +102,8 @@ create_log(void)
 
   new->prev = NULL;
   new->next = NULL;
+
+  return new;
 }
 
 static void
