@@ -61,7 +61,7 @@ update_book_stack_information_cover(struct Book *book)
 
   GError    *error = NULL;
   pxbuf = gdk_pixbuf_new_from_file_at_size(book->cover,
-                                           320, -1, &error);
+                                           -1, 480, &error);
 
   gtk_image_set_from_pixbuf(GTK_IMAGE(image), GDK_PIXBUF(pxbuf));
 }
@@ -215,11 +215,7 @@ update_book_stack_log_list_build_item_header(struct Log *log)
   gtk_label_set_attributes(GTK_LABEL(label_01), attributes);
   gtk_label_set_attributes(GTK_LABEL(label_02), attributes);
 
-  //pango_attribute_destroy(attr_01);
-  //pango_attribute_destroy(attr_02);
-  //pango_attribute_destroy(attr_03);
-
-  //pango_attr_list_unref(attributes);
+  pango_attr_list_unref(attributes);
 
   gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label_01),
                      FALSE, FALSE, 0);
@@ -234,6 +230,73 @@ update_book_stack_log_list_build_item_data(struct Book *book, struct Log *log)
 {
   GtkWidget *box;
   box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 5);
+
+  GtkWidget *box_labels, *box_content;
+  box_labels  = update_book_stack_log_list_build_item_data_labels();
+  box_content = update_book_stack_log_list_build_item_data_contents(book, log);
+
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(box_labels),
+                     FALSE, FALSE, 0);
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(box_content),
+                     FALSE, FALSE, 0);
+
+  return box;
+}
+
+static GtkWidget *
+update_book_stack_log_list_build_item_data_labels(void)
+{
+  GtkWidget *box;
+  box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+
+  PangoAttrList *attributes;
+  attributes = pango_attr_list_new();
+
+  PangoAttribute *attr_01;
+  attr_01 = pango_attr_weight_new(PANGO_WEIGHT_SEMIBOLD);
+
+  pango_attr_list_insert(attributes, attr_01);
+
+  GtkWidget *label;
+  label = gtk_label_new("Date:");
+  gtk_label_set_xalign(GTK_LABEL(label), 0);
+  gtk_label_set_attributes(GTK_LABEL(label), attributes);
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
+                     FALSE, FALSE, 0);
+
+  label = gtk_label_new("Start Time:");
+  gtk_label_set_attributes(GTK_LABEL(label), attributes);
+  gtk_label_set_xalign(GTK_LABEL(label), 0);
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
+                     FALSE, FALSE, 0);
+
+  label = gtk_label_new("End Time:");
+  gtk_label_set_xalign(GTK_LABEL(label), 0);
+  gtk_label_set_attributes(GTK_LABEL(label), attributes);
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
+                     FALSE, FALSE, 0);
+
+  label = gtk_label_new("Start Page:");
+  gtk_label_set_xalign(GTK_LABEL(label), 0);
+  gtk_label_set_attributes(GTK_LABEL(label), attributes);
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
+                     FALSE, FALSE, 0);
+
+  label = gtk_label_new("End Page:");
+  gtk_label_set_xalign(GTK_LABEL(label), 0);
+  gtk_label_set_attributes(GTK_LABEL(label), attributes);
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label),
+                     FALSE, FALSE, 0);
+
+  pango_attr_list_unref(attributes);
+  return box;
+}
+
+static GtkWidget *
+update_book_stack_log_list_build_item_data_contents(struct Book *book, struct Log *log)
+{
+  GtkWidget *box;
+  box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
 
   return box;
 }

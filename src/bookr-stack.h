@@ -29,4 +29,6 @@ static void update_book_stack_log_list_build(GtkWidget *, struct Book *);
 static GtkWidget * update_book_stack_log_list_build_item(struct Book *, struct Log *);
 static GtkWidget * update_book_stack_log_list_build_item_header(struct Log *);
 static GtkWidget * update_book_stack_log_list_build_item_data(struct Book *, struct Log *);
+static GtkWidget * update_book_stack_log_list_build_item_data_labels(void);
+static GtkWidget * update_book_stack_log_list_build_item_data_contents(struct Book *, struct Log *);
 #endif
