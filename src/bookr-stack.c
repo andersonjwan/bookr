@@ -84,38 +84,47 @@ update_book_stack_information_attributes(struct Book *book)
 {
   GtkWidget *label;
 
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-title-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-title-label-content");
   gtk_label_set_text(GTK_LABEL(label), book->title);
 
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-author-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-author-label-content");
   gtk_label_set_text(GTK_LABEL(label), book->author);
 
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-publisher-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-publisher-label-content");
   gtk_label_set_text(GTK_LABEL(label), book->publisher);
 
   gchar data[5];
   sprintf(data, "%04d", book->published);
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-published-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-published-label-content");
   gtk_label_set_text(GTK_LABEL(label), data);
 
   sprintf(data, "%d", book->edition);
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-edition-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-edition-label-content");
   gtk_label_set_text(GTK_LABEL(label), data);
 
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-language-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-language-label-content");
   gtk_label_set_text(GTK_LABEL(label), book->language);
 
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-isbn-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-isbn-label-content");
   gtk_label_set_text(GTK_LABEL(label), book->isbn);
 
   gchar start[10];
   sprintf(start, "%d", book->start);
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-start-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-start-label-content");
   gtk_label_set_text(GTK_LABEL(label), start);
 
   gchar length[10];
   sprintf(length, "%d", book->pages);
-  label = get_widget(builder, "bookr-main-stack-books-info-details-attributes-print-label-content");
+  label = get_widget(builder,
+                     "bookr-main-stack-books-info-details-attributes-print-label-content");
   gtk_label_set_text(GTK_LABEL(label), length);
 }
 
