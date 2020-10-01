@@ -87,8 +87,8 @@ create_log(void)
   new->end_hr    = convert_time(atoi(data[3]), data[5]);
   new->end_min   = atoi(data[4]);
 
-  new->start_pg  = atoi(data[6]);
-  new->end_pg    = atoi(data[7]);
+  new->start_pg  = (guint) atoi(data[6]);
+  new->end_pg    = (guint) atoi(data[7]);
 
   gint size;
   size = strlen(data[8]) + 1;
@@ -145,7 +145,9 @@ print_log(struct Log *log)
   printf("Date: %02d/%02d/%02d\n", log->month, log->day, log->year);
   printf("Time: %02d:%02d - %02d:%02d\n", log->start_hr, log->start_min,
          log->end_hr, log->end_min);
-  printf("Page: %05d to %05d\n", log->start_pg, log->end_pg);
+  printf("Pages: %05d to %05d\n", log->start_pg, log->end_pg);
+  printf("Log Number: %u\n", log->number);
+  printf("IsCalendarWritten: %d\n", log->calendar);
   printf("Note:\n----------\n%s\n----------\n", log->note);
 
   printf("Prev: %p\n", log->prev);

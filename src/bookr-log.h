@@ -6,9 +6,9 @@
 
 struct Log {
   /* date */
-  gint day;             // log day
-  gint month;           // log month
-  gint year;            // log year
+  guint day;             // log day
+  guint month;           // log month
+  guint year;            // log year
 
   /* times */
   gint start_hr;        // log's start hour
