@@ -182,7 +182,7 @@ update_book_stack_log_list_build_item(struct Book *book, struct Log *log)
   gtk_container_set_border_width(GTK_CONTAINER(box), 5);
 
   GtkWidget *header, *content;
-  header  = update_book_stack_log_list_build_item_header(log);
+  header  = update_book_stack_log_list_build_item_header(book, log);
   content = update_book_stack_log_list_build_item_content(log);
 
   gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(header),
@@ -205,15 +205,15 @@ update_book_stack_log_list_build_item(struct Book *book, struct Log *log)
 }
 
 static GtkWidget *
-update_book_stack_log_list_build_item_header(struct Log *log)
+update_book_stack_log_list_build_item_header(struct Book *book, struct Log *log)
 {
   GtkWidget *box;
   box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 5);
 
   GtkWidget *label_01, *label_02, *label_03;
 
-  gchar data_01[strlen("Log No. #####") + 1];
-  sprintf(data_01, "Log No. %05d", log->number);
+  gchar data_01[strlen("Log Entry - ##/##/####") + 1];
+  sprintf(data_01, "Log Entry - %02d/%02d/%04d", log->month, log->day, log->year);
   label_01 = gtk_label_new(data_01);
 
   gchar data_02[strlen("Last Modifed: ##/##/####") + 1];
@@ -264,9 +264,8 @@ update_book_stack_log_list_build_item_content(struct Log *log)
 
   GtkWidget *label;
 
-  gchar content[strlen("##/##/####, ##### - #####") + 1];
-  sprintf(content, "%02d/%02d/%04d, %05d - %05d", log->month, log->day, log->year,
-          log->start_pg, log->end_pg);
+  gchar content[strlen("##### - #####") + 1];
+  sprintf(content, "%05d - %05d", log->start_pg, log->end_pg);
   label = gtk_label_new(content);
 
   PangoAttrList *content_attr;
@@ -305,7 +304,7 @@ update_book_stack_log_list_build_item_tooltip(GtkWidget *box, struct Log *log)
 
   tooltip = realloc(tooltip, size);
 
-  sprintf(tooltip, "<b>Log #%05d</b>\n\n", log->number);
+  sprintf(tooltip, "<b>Log #%d</b>\n\n", log->number);
 
   gchar date[strlen("Date: ##/##/####\n") + 1];
   sprintf(date, "Date: %02d/%02d/%04d\n", log->month, log->day, log->year);
