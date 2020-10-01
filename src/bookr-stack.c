@@ -176,17 +176,30 @@ static GtkWidget *
 update_book_stack_log_list_build_item(struct Book *book, struct Log *log)
 {
   GtkWidget *item;
-  item = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
-  gtk_container_set_border_width(GTK_CONTAINER(item), 5);
+  item = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+  GtkWidget *box;
+  box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+  gtk_container_set_border_width(GTK_CONTAINER(box), 5);
 
   GtkWidget *header, *content;
   header  = update_book_stack_log_list_build_item_header(log);
   content = update_book_stack_log_list_build_item_content(log);
 
-  gtk_box_pack_start(GTK_BOX(item), GTK_WIDGET(header),
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(header),
                      FALSE, FALSE, 0);
-  gtk_box_pack_start(GTK_BOX(item), GTK_WIDGET(content),
+  gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(content),
                      FALSE, FALSE, 0);
+
+  gtk_box_pack_start(GTK_BOX(item), GTK_WIDGET(box),
+                     FALSE, FALSE, 0);
+
+  GtkWidget *separator;
+  separator = gtk_separator_new(GTK_ORIENTATION_HORIZONTAL);
+
+  gtk_box_pack_end(GTK_BOX(item), GTK_WIDGET(separator),
+                   FALSE, FALSE, 0);
+
+  update_book_stack_log_list_build_item_tooltip(item, log);
 
   return item;
 }
@@ -199,8 +212,8 @@ update_book_stack_log_list_build_item_header(struct Log *log)
 
   GtkWidget *label_01, *label_02, *label_03;
 
-  gchar data_01[strlen("Log ######") + 1];
-  sprintf(data_01, "Log #%05d", log->number);
+  gchar data_01[strlen("Log No. #####") + 1];
+  sprintf(data_01, "Log No. %05d", log->number);
   label_01 = gtk_label_new(data_01);
 
   gchar data_02[strlen("Last Modifed: ##/##/####") + 1];
@@ -274,4 +287,43 @@ update_book_stack_log_list_build_item_content(struct Log *log)
                      FALSE, FALSE, 0);
 
   return box;
+}
+
+static void
+update_book_stack_log_list_build_item_tooltip(GtkWidget *box, struct Log *log)
+{
+  gchar *tooltip;
+  gint size;
+
+  size = strlen("<b>Log ######</b>\n\n") + 1;
+  tooltip = (gchar *) malloc(sizeof(gchar) * size);
+
+  size += strlen("Date: ##/##/####\n");
+  size += strlen("Time: ##:## - ##:##\n");
+  size += strlen("Pages: ##### - #####\n");
+  size += strlen("Note: ") + strlen(log->note);
+
+  tooltip = realloc(tooltip, size);
+
+  sprintf(tooltip, "<b>Log #%05d</b>\n\n", log->number);
+
+  gchar date[strlen("Date: ##/##/####\n") + 1];
+  sprintf(date, "Date: %02d/%02d/%04d\n", log->month, log->day, log->year);
+  strcat(tooltip, date);
+
+  gchar time[strlen("Time: ##:## - ##:##\n") + 1];
+  sprintf(time, "Time: %02d:%02d - %02d:%02d\n", log->start_hr, log->start_min,
+          log->end_hr, log->end_min);
+  strcat(tooltip, time);
+  gchar pages[strlen("Pages: ##### - #####\n") + 1];
+  sprintf(pages, "Pages: %05d - %05d\n", log->start_pg, log->end_pg);
+  strcat(tooltip, pages);
+
+  gchar note[strlen("Note: \n") + strlen(log->note) + 1];
+  sprintf(note, "Note: %s", log->note);
+  strcat(tooltip, note);
+
+  gtk_widget_set_tooltip_markup(GTK_WIDGET(box), tooltip);
+
+  g_free(tooltip);
 }
