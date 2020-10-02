@@ -337,9 +337,9 @@ parse_book_log_information(void)
   g_free(data);
 
   data = parse_book_log_note();
-  new->note = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
-  strcpy(new->note, data);
+  new->note = refactor_note(data);
   g_free(data);
+
 
   return new;
 }
@@ -468,10 +468,44 @@ parse_book_log_number(void)
 static gchar *
 parse_book_log_note(void)
 {
-  expect_key("NOTES");
+  expect_key("NOTE");
 
   gchar *token;
   token = get_value(";");
 
   return token;
+}
+
+
+static gchar *
+refactor_note(gchar *note)
+{
+  gchar *character, result[strlen(note) + 1];
+  character = note;
+
+  int i = 0;
+  while(*character != '\0') {
+    if(*character == '\\') {
+      ++character;
+      if(*character == 'n') {
+        result[i] = '\n';
+      }
+      else {
+        result[i] = '\\';
+      }
+    }
+    else {
+      result[i] = *character;
+    }
+
+    ++character, ++i;
+  }
+
+  result[i] = '\0';
+
+  gchar *final;
+  final = (gchar *) malloc(sizeof(gchar) * strlen(result) + 1);
+  strcpy(final, result);
+
+  return final;
 }

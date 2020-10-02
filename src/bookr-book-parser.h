@@ -40,4 +40,5 @@ static gchar * parse_book_log_calendar(void);
 static gchar * parse_book_log_number(void);
 static gchar * parse_book_log_note(void);
 
+static gchar * refactor_note(gchar *);
 #endif

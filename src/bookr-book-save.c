@@ -80,7 +80,32 @@ write_log(struct Log *log)
 
   fprintf(file, "CALENDAR:%02d\n", log->calendar);
   fprintf(file, "NUMBER:%02d\n", log->number);
-  fprintf(file, "NOTES:%s\n", log->note);
+  write_log_note(log);
 
   fprintf(file, "LOG:END\n");
+}
+
+static void
+write_log_note(struct Log *log)
+{
+  fprintf(file, "NOTE:");
+
+  gchar *character;
+  character = log->note;
+
+  while(*character != '\0') {
+    if(*character == '\n') {
+      fprintf(file, "\\n");
+    }
+    else if(*character == '\\') {
+      fprintf(file, "\\\\");
+    }
+    else {
+      putc(*character, file);
+    }
+
+    ++character;
+  }
+
+  fprintf(file, "\n");
 }

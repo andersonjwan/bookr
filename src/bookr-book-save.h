@@ -15,5 +15,5 @@ static void write_book(void);
 static void write_book_information(void);
 static void write_book_logs(void);
 static void write_log(struct Log *);
-
+static void write_log_note(struct Log *);
 #endif
