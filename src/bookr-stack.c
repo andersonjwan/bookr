@@ -53,12 +53,13 @@ update_book_stack(struct Book *book)
   update_book_stack_information(book);
   update_book_stack_log_list(book);
 
-  if(!book->log) {
-    GtkWidget *paned;
-    paned = get_widget(builder, "bookr-main-stack-books-pane-info");
+  GtkWidget *paned;
+  paned = get_widget(builder, "bookr-main-stack-books-pane-info");
 
+  if(!book->log)
     gtk_paned_set_position(GTK_PANED(paned), 0);
-  }
+  else
+    gtk_paned_set_position(GTK_PANED(paned), 250);
 }
 
 static void
