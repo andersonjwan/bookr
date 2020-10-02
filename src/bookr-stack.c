@@ -18,6 +18,7 @@ static void
 update_log_stack(struct Book *book)
 {
   update_log_stack_header(book);
+  update_log_stack_progress(book);
 }
 
 static void
@@ -32,6 +33,18 @@ update_log_stack_header(struct Book *book)
   /* update author label */
   label = get_widget(builder, "bookr-main-stack-logs-header-label-authors");
   gtk_label_set_text(GTK_LABEL(label), book->author);
+}
+
+static void
+update_log_stack_progress(struct Book *book)
+{
+  GtkWidget *bar;
+  bar = get_widget(builder, "bookr-main-stack-logs-progress");
+
+  gdouble progress;
+  progress = bookr_stats_get_progress(book);
+
+  gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(bar), progress);
 }
 
 static void

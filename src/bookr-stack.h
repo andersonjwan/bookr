@@ -7,6 +7,8 @@
 #include "bookr-book.h"
 #include "bookr-log.h"
 
+#include "bookr-stats.h"
+
 /* forward declarations */
 struct Book;
 struct Log;
@@ -15,6 +17,7 @@ void update_stacks(struct Book *);
 
 static void update_log_stack(struct Book *);
 static void update_log_stack_header(struct Book *);
+static void update_log_stack_progress(struct Book *);
 
 static void update_book_stack(struct Book *);
 

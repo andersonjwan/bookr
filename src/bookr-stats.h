@@ -6,7 +6,9 @@
 
 /* forward declarations */
 struct Book;
+struct Log;
 
 guint bookr_stats_get_current_page(struct Book *);
-
+gdouble bookr_stats_get_progress(struct Book *);
+guint bookr_stats_get_page_diff(struct Log *);
 #endif
