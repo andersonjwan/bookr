@@ -171,6 +171,19 @@
                                   <object class="GtkListBox" id="bookr-main-stack-books-scrolled-viewport-list-box">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                    <child type="placeholder">
+                                      <object class="GtkLabel">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="label" translatable="yes">Log Entries will
+show up here</property>
+                                        <property name="justify">center</property>
+                                        <attributes>
+                                          <attribute name="style" value="italic"/>
+                                          <attribute name="foreground" value="#88888a8a8585"/>
+                                        </attributes>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                               </object>
