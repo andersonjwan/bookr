@@ -33,7 +33,7 @@
   </object>
   <object class="GtkApplicationWindow" id="bookr-window-main">
     <property name="can_focus">False</property>
-    <property name="border_width">10</property>
+    <property name="window_position">center</property>
     <property name="default_width">840</property>
     <property name="default_height">680</property>
     <signal name="delete-event" handler="bookr_close" swapped="no"/>
@@ -149,145 +149,58 @@
                   <object class="GtkBox" id="bookr-main-stack-books-box-info">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="spacing">10</property>
+                    <property name="spacing">5</property>
                     <child>
-                      <object class="GtkAspectFrame" id="bookr-main-stack-books-info-cover-aspect-frame">
+                      <object class="GtkPaned">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="valign">start</property>
-                        <property name="label_xalign">0</property>
-                        <property name="shadow_type">etched-out</property>
+                        <property name="can_focus">True</property>
+                        <property name="position">250</property>
+                        <property name="position_set">True</property>
                         <child>
-                          <object class="GtkImage" id="bookr-main-stack-books-info-cover-image">
+                          <object class="GtkScrolledWindow" id="bookr-main-stack-books-scrolled-logs">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="pixbuf">default-cover.jpg</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSeparator">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox" id="bookr-main-stack-books-info-details-box">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">5</property>
-                        <child>
-                          <object class="GtkBox" id="bookr-main-stack-books-info-details-header-box">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="orientation">vertical</property>
+                            <property name="can_focus">True</property>
+                            <property name="min_content_width">250</property>
+                            <property name="min_content_height">53</property>
+                            <property name="max_content_height">265</property>
                             <child>
-                              <object class="GtkLabel" id="bookr-main-stack-books-info-details-header-title-label">
+                              <object class="GtkViewport" id="bookr-main-stack-books-scrolled-viewport">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">Book Title</property>
-                                <property name="ellipsize">end</property>
-                                <property name="xalign">0</property>
-                                <attributes>
-                                  <attribute name="weight" value="bold"/>
-                                  <attribute name="scale" value="1.5"/>
-                                </attributes>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="bookr-main-stack-books-info-details-header-author-label">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">Book Author</property>
-                                <property name="ellipsize">end</property>
-                                <property name="xalign">0</property>
-                                <attributes>
-                                  <attribute name="style" value="italic"/>
-                                  <attribute name="foreground" value="#88888a8a8585"/>
-                                </attributes>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkSeparator">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="bookr-main-stack-books-info-details-box-attributes">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">5</property>
-                            <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-title">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
+                                <property name="shadow_type">none</property>
                                 <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-title-label-header">
+                                  <object class="GtkListBox" id="bookr-main-stack-books-scrolled-viewport-list-box">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Title</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
                                 </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="resize">False</property>
+                            <property name="shrink">True</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="border_width">10</property>
+                            <property name="spacing">10</property>
+                            <child>
+                              <object class="GtkAspectFrame" id="bookr-main-stack-books-info-cover-aspect-frame">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="valign">start</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">etched-out</property>
                                 <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-title-label-content">
+                                  <object class="GtkImage" id="bookr-main-stack-books-info-cover-image">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book Title</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
+                                    <property name="pixbuf">default-cover.jpg</property>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
                                 </child>
                               </object>
                               <packing>
@@ -297,19 +210,52 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-author">
+                              <object class="GtkBox" id="bookr-main-stack-books-info-details-box">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="orientation">vertical</property>
+                                <property name="spacing">5</property>
                                 <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-author-label-header">
+                                  <object class="GtkBox" id="bookr-main-stack-books-info-details-header-box">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Author</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel" id="bookr-main-stack-books-info-details-header-title-label">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="label" translatable="yes">Book Title</property>
+                                        <property name="ellipsize">end</property>
+                                        <property name="xalign">0</property>
+                                        <attributes>
+                                          <attribute name="weight" value="bold"/>
+                                          <attribute name="scale" value="1.5"/>
+                                        </attributes>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="bookr-main-stack-books-info-details-header-author-label">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="label" translatable="yes">Book Author</property>
+                                        <property name="ellipsize">end</property>
+                                        <property name="xalign">0</property>
+                                        <attributes>
+                                          <attribute name="style" value="italic"/>
+                                          <attribute name="foreground" value="#88888a8a8585"/>
+                                        </attributes>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -318,13 +264,9 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-author-label-content">
+                                  <object class="GtkSeparator">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book Author</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -332,319 +274,417 @@
                                     <property name="position">1</property>
                                   </packing>
                                 </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-publisher">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
                                 <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-publisher-label-header">
+                                  <object class="GtkBox" id="bookr-main-stack-books-info-details-box-attributes">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Publisher</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
+                                    <property name="orientation">vertical</property>
+                                    <property name="spacing">5</property>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-title">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-title-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Title</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-title-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book Title</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-author">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-author-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Author</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-author-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book Author</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-publisher">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-publisher-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Publisher</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-publisher-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book Publisher</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-published">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-published-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Year Published</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-published-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book Published Year</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">3</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-edition">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-edition-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Edition</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-edition-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book Edition</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">4</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-language">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-language-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Language</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-language-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book Author</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">5</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-isbn">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-isbn-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">ISBN</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-isbn-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book ISBN</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">6</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-start">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-start-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Start Page</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-start-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book Start Page</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">7</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-print">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-print-label-header">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Print Length</property>
+                                            <property name="xalign">0</property>
+                                            <attributes>
+                                              <attribute name="foreground" value="#88888a8a8585"/>
+                                            </attributes>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-print-label-content">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Book Print Length</property>
+                                            <property name="selectable">True</property>
+                                            <property name="ellipsize">end</property>
+                                            <property name="xalign">0</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">8</property>
+                                      </packing>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-publisher-label-content">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book Publisher</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
+                                    <property name="position">2</property>
                                   </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
+                                <property name="expand">True</property>
                                 <property name="fill">True</property>
                                 <property name="position">2</property>
                               </packing>
                             </child>
-                            <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-published">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-published-label-header">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Year Published</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-published-label-content">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book Published Year</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-edition">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-edition-label-header">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Edition</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-edition-label-content">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book Edition</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">4</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-language">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-language-label-header">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Language</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-language-label-content">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book Author</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">5</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-isbn">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-isbn-label-header">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">ISBN</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-isbn-label-content">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book ISBN</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">6</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-start">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-start-label-header">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Start Page</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-start-label-content">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book Start Page</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">7</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="bookr-main-stack-books-info-details-attributes-box-print">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-print-label-header">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Print Length</property>
-                                    <property name="xalign">0</property>
-                                    <attributes>
-                                      <attribute name="foreground" value="#88888a8a8585"/>
-                                    </attributes>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="bookr-main-stack-books-info-details-attributes-print-label-content">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Book Print Length</property>
-                                    <property name="selectable">True</property>
-                                    <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
+                            <property name="resize">True</property>
+                            <property name="shrink">True</property>
                           </packing>
                         </child>
                       </object>
@@ -656,38 +696,9 @@
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow" id="bookr-main-stack-books-scrolled-logs">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="margin_top">10</property>
-                    <property name="shadow_type">in</property>
-                    <property name="min_content_height">53</property>
-                    <property name="max_content_height">265</property>
-                    <property name="propagate_natural_height">True</property>
-                    <child>
-                      <object class="GtkViewport" id="bookr-main-stack-books-scrolled-viewport">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="shadow_type">none</property>
-                        <child>
-                          <object class="GtkListBox" id="bookr-main-stack-books-scrolled-viewport-list-box">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
