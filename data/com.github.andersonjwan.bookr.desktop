@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Bookr
+Keywords=Reading;Logging;Productivity;
 Comment=Track reading habits and books
-Exec=com.github.andersonjwan.bookr
+Exec=/home/andersonjwan/Projects/bookr/build/com.github.andersonjwan.bookr
 Terminal=false
 Type=Application
-Icon=bookr
-Categories=Reading;Books;Journal
+Icon=/home/andersonjwan/Projects/bookr/data/icons/hicolor/256x256/bookr.png
+Categories=GTK;Office;
 StartupNotify=true
