@@ -238,7 +238,7 @@ update_book_stack_log_list_build_item_header(struct Book *book, struct Log *log)
   pango_attr_list_insert(log_attr, log_01);
 
   /* apply attributes */
-  gtk_label_set_attributes(GTK_LABEL(label_01), log_attr);
+  // gtk_label_set_attributes(GTK_LABEL(label_01), log_attr);
 
   pango_attr_list_unref(log_attr);
 
