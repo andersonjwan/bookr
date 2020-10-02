@@ -151,7 +151,7 @@
                     <property name="can_focus">False</property>
                     <property name="spacing">5</property>
                     <child>
-                      <object class="GtkPaned">
+                      <object class="GtkPaned" id="bookr-main-stack-books-pane-info">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="position">250</property>
@@ -183,7 +183,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkBox" id="bookr-main-stack-books-info-paned-box">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">10</property>
