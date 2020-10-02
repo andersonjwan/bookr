@@ -17,10 +17,12 @@ show_log_add(void)
     gtk_builder_connect_signals(GTK_BUILDER(builder), NULL);
   }
 
-  dialog = get_dialog(builder, "bookr-log-add-dialog");
-  autofill_log_add();
+  if(books) {
+    dialog = get_dialog(builder, "bookr-log-add-dialog");
+    autofill_log_add();
 
-  gtk_widget_show_all(GTK_WIDGET(dialog));
+    gtk_widget_show_all(GTK_WIDGET(dialog));
+  }
 }
 
 void
