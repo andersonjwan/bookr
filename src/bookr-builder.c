@@ -110,11 +110,13 @@ void
 show_popover_books(GtkButton *button,
                    gpointer   data)
 {
-  GtkWidget *popover;
-  popover = get_widget(builder, "bookr-main-popover-books-list");
+  if(books) {
+    GtkWidget *popover;
+    popover = get_widget(builder, "bookr-main-popover-books-list");
 
-  gtk_popover_popup(GTK_POPOVER(popover));
-  gtk_widget_show_all(GTK_WIDGET(popover));
+    gtk_popover_popup(GTK_POPOVER(popover));
+    gtk_widget_show_all(GTK_WIDGET(popover));
+  }
 }
 
 void
