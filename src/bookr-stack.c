@@ -212,46 +212,25 @@ update_book_stack_log_list_build_item_header(struct Book *book, struct Log *log)
 
   GtkWidget *label_01, *label_02, *label_03;
 
-  gchar data_01[strlen("Log Entry - ##/##/####") + 1];
-  sprintf(data_01, "Log Entry - %02d/%02d/%04d", log->month, log->day, log->year);
+  gchar data_01[strlen("Book Log Entry") + 1];
+  sprintf(data_01, "Book Log Entry");
   label_01 = gtk_label_new(data_01);
-
-  gchar data_02[strlen("Last Modifed: ##/##/####") + 1];
-  sprintf(data_02, "Last Modified: %02d/%02d/%04d", log->month, log->day, log->year);
-  label_02 = gtk_label_new(data_02);
 
   /* attributes */
   PangoAttrList *log_attr, *mod_attr;
   log_attr = pango_attr_list_new();
-  mod_attr = pango_attr_list_new();
 
   PangoAttribute *log_01;
   log_01 = pango_attr_weight_new(PANGO_WEIGHT_SEMIBOLD);
-
-  PangoAttribute *mod_01, *mod_02, *mod_03;
-  mod_01 = pango_attr_style_new(PANGO_STYLE_ITALIC);
-  mod_02 = pango_attr_scale_new(0.85);
-  mod_03 = pango_attr_foreground_new(186 * 257, 189 * 257, 182 * 257);
-
   pango_attr_list_insert(log_attr, log_01);
-
-  pango_attr_list_insert(mod_attr, mod_01);
-  pango_attr_list_insert(mod_attr, mod_02);
-  pango_attr_list_insert(mod_attr, mod_03);
 
   /* apply attributes */
   gtk_label_set_attributes(GTK_LABEL(label_01), log_attr);
-  gtk_label_set_attributes(GTK_LABEL(label_02), mod_attr);
 
   pango_attr_list_unref(log_attr);
-  pango_attr_list_unref(mod_attr);
 
   gtk_box_pack_start(GTK_BOX(box), GTK_WIDGET(label_01),
                      FALSE, FALSE, 0);
-  gtk_box_pack_end(GTK_BOX(box), GTK_WIDGET(label_02),
-                   FALSE, FALSE, 0);
-
-  //  update_book_stack_log_list_build_item_data(box, log);
 
   return box;
 }
@@ -264,8 +243,9 @@ update_book_stack_log_list_build_item_content(struct Log *log)
 
   GtkWidget *label;
 
-  gchar content[strlen("##### - #####") + 1];
-  sprintf(content, "%05d - %05d", log->start_pg, log->end_pg);
+  gchar content[strlen("##/##/####, ##### - #####") + 1];
+  sprintf(content, "%02d/%02d/%04d, %05d - %05d", log->month, log->day,
+          log->year, log->start_pg, log->end_pg);
   label = gtk_label_new(content);
 
   PangoAttrList *content_attr;
