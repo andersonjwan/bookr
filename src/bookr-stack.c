@@ -296,38 +296,32 @@ update_book_stack_log_list_build_item_content(struct Log *log)
 static void
 update_book_stack_log_list_build_item_tooltip(GtkWidget *box, struct Log *log)
 {
-  gchar *tooltip;
   gint size;
+  size = strlen("<b>Log ######</b>\n") + 1;
+  size += strlen("##/##/####, ##:## - ##:##\n");
+  size += strlen("Pages: ##### - #####");
 
-  size = strlen("<b>Log ######</b>\n\n") + 1;
-  tooltip = (gchar *) malloc(sizeof(gchar) * size);
+  if(strcmp(log->note, "") != 0)
+    size += 2 + strlen(log->note);
 
-  size += strlen("Date: ##/##/####\n");
-  size += strlen("Time: ##:## - ##:##\n");
-  size += strlen("Pages: ##### - #####\n");
-  size += strlen("Note: ") + strlen(log->note);
+  gchar tooltip[size];
+  sprintf(tooltip, "<b>Log #%d</b>\n", log->number);
 
-  tooltip = realloc(tooltip, size);
+  gchar datetime[strlen("##/##/####, ##:## - ##:##\n") + 1];
+  sprintf(datetime, "%02d/%02d/%02d, %02d:%02d - %02d:%02d\n",
+          log->month, log->day, log->year,
+          log->start_hr, log->start_min, log->end_hr, log->end_min);
+  strcat(tooltip, datetime);
 
-  sprintf(tooltip, "<b>Log #%d</b>\n\n", log->number);
-
-  gchar date[strlen("Date: ##/##/####\n") + 1];
-  sprintf(date, "Date: %02d/%02d/%04d\n", log->month, log->day, log->year);
-  strcat(tooltip, date);
-
-  gchar time[strlen("Time: ##:## - ##:##\n") + 1];
-  sprintf(time, "Time: %02d:%02d - %02d:%02d\n", log->start_hr, log->start_min,
-          log->end_hr, log->end_min);
-  strcat(tooltip, time);
-  gchar pages[strlen("Pages: ##### - #####\n") + 1];
-  sprintf(pages, "Pages: %05d - %05d\n", log->start_pg, log->end_pg);
+  gchar pages[strlen("Pages: ##### - #####") + 1];
+  sprintf(pages, "Pages: %05d - %05d", log->start_pg, log->end_pg);
   strcat(tooltip, pages);
 
-  gchar note[strlen("Note: \n") + strlen(log->note) + 1];
-  sprintf(note, "Note: %s", log->note);
-  strcat(tooltip, note);
+  if(strcmp(log->note, "") != 0) {
+    gchar note[2 + strlen(log->note) + 1];
+    sprintf(note, "\n\n%s", log->note);
+    strcat(tooltip, note);
+  }
 
   gtk_widget_set_tooltip_markup(GTK_WIDGET(box), tooltip);
-
-  g_free(tooltip);
 }
