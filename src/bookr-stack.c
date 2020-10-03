@@ -45,6 +45,10 @@ update_log_stack_progress(struct Book *book)
   progress = bookr_stats_get_progress(book);
 
   gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(bar), progress);
+
+  gchar percent[4];
+  sprintf(percent, "%d%%", (gint) (progress * 100));
+  gtk_widget_set_tooltip_text(GTK_WIDGET(bar), percent);
 }
 
 static void
