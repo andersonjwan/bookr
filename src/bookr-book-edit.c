@@ -11,8 +11,10 @@ show_book_edit(void)
     gtk_builder_connect_signals(GTK_BUILDER(builder), NULL);
   }
 
-  dialog = get_dialog(builder, "bookr-book-edit-dialog");
-  gtk_widget_show_all(GTK_WIDGET(dialog));
+  if(books) {
+    dialog = get_dialog(builder, "bookr-book-edit-dialog");
+    gtk_widget_show_all(GTK_WIDGET(dialog));
+  }
 }
 
 void
