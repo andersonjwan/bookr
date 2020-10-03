@@ -107,14 +107,44 @@ autofill_log_add_start_page(void)
 }
 
 void
-format_log_add_time(GtkEntry *entry,
-                    gpointer  data)
+format_log_add_time_hour(GtkEntry *entry,
+                         gpointer  data)
 {
   const gchar *time;
   time = gtk_entry_get_text(GTK_ENTRY(entry));
 
+  gchar *end;
+  gint result = strtol(time, &end, 10);
+
   gchar formatted[3];
-  sprintf(formatted, "%02d", atoi(time));
+  if(result >= 1 && result <= 12) {
+    sprintf(formatted, "%02d", result);
+  }
+  else {
+    sprintf(formatted, "01");
+  }
+
+  /* set update */
+  gtk_entry_set_text(GTK_ENTRY(entry), formatted);
+}
+
+void
+format_log_add_time_minute(GtkEntry *entry,
+                           gpointer  data)
+{
+  const gchar *time;
+  time = gtk_entry_get_text(GTK_ENTRY(entry));
+
+  gchar *end;
+  gint result = strtol(time, &end, 10);
+
+  gchar formatted[3];
+  if(result >= 1 && result < 60) {
+    sprintf(formatted, "%02d", result);
+  }
+  else {
+    sprintf(formatted, "01");
+  }
 
   /* set update */
   gtk_entry_set_text(GTK_ENTRY(entry), formatted);

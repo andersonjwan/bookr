@@ -15,5 +15,6 @@ static void autofill_log_add(void);
 static void autofill_log_add_calendar(void);
 static void autofill_log_add_start_page(void);
 
-void format_log_add_time(GtkEntry *, gpointer);
+void format_log_add_time_hour(GtkEntry *, gpointer);
+void format_log_add_time_minute(GtkEntry *, gpointer);
 #endif
