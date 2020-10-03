@@ -24,6 +24,8 @@ new_book(GtkButton *button,
 
   create_book_file();
   save_book_file();
+
+  select_book(NULL, active->path);
 }
 
 static struct Book *
