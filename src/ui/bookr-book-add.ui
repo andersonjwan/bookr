@@ -311,6 +311,7 @@
                   <object class="GtkEntry" id="bookr-book-add-entries-entry-cover">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="editable">False</property>
                     <property name="primary_icon_name">document-open-symbolic</property>
                     <signal name="icon-press" handler="show_cover_selector" swapped="no"/>
                   </object>
@@ -324,6 +325,7 @@
                   <object class="GtkEntry" id="bookr-book-add-entries-entry-calendar">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="editable">False</property>
                     <property name="primary_icon_name">org.gnome.Calendar-symbolic</property>
                     <signal name="icon-press" handler="show_calendar_selector" swapped="no"/>
                   </object>
