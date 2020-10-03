@@ -153,7 +153,11 @@
                                   <object class="GtkEntry" id="bookr-log-add-time-entry-start-hour">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
+                                    <property name="max_length">2</property>
                                     <property name="width_chars">2</property>
+                                    <property name="max_width_chars">2</property>
+                                    <property name="xalign">0.5</property>
+                                    <property name="input_purpose">digits</property>
                                     <signal name="focus-out-event" handler="format_log_add_time" swapped="no"/>
                                   </object>
                                   <packing>
@@ -178,7 +182,11 @@
                                   <object class="GtkEntry" id="bookr-log-add-time-entry-start-minute">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
+                                    <property name="max_length">2</property>
                                     <property name="width_chars">2</property>
+                                    <property name="max_width_chars">2</property>
+                                    <property name="xalign">0.5</property>
+                                    <property name="input_purpose">digits</property>
                                     <signal name="focus-out-event" handler="format_log_add_time" swapped="no"/>
                                   </object>
                                   <packing>
@@ -217,7 +225,11 @@
                                   <object class="GtkEntry" id="bookr-log-add-time-entry-end-hour">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
+                                    <property name="max_length">2</property>
                                     <property name="width_chars">2</property>
+                                    <property name="max_width_chars">2</property>
+                                    <property name="xalign">0.5</property>
+                                    <property name="input_purpose">digits</property>
                                     <signal name="focus-out-event" handler="format_log_add_time" swapped="no"/>
                                   </object>
                                   <packing>
@@ -242,7 +254,11 @@
                                   <object class="GtkEntry" id="bookr-log-add-time-entry-end-minute">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
+                                    <property name="max_length">2</property>
                                     <property name="width_chars">2</property>
+                                    <property name="max_width_chars">2</property>
+                                    <property name="xalign">0.5</property>
+                                    <property name="input_purpose">digits</property>
                                     <signal name="focus-out-event" handler="format_log_add_time" swapped="no"/>
                                   </object>
                                   <packing>
