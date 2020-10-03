@@ -105,3 +105,17 @@ autofill_log_add_start_page(void)
 
   gtk_entry_set_text(GTK_ENTRY(entry), data);
 }
+
+void
+format_log_add_time(GtkEntry *entry,
+                    gpointer  data)
+{
+  const gchar *time;
+  time = gtk_entry_get_text(GTK_ENTRY(entry));
+
+  gchar formatted[3];
+  sprintf(formatted, "%02d", atoi(time));
+
+  /* set update */
+  gtk_entry_set_text(GTK_ENTRY(entry), formatted);
+}
