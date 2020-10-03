@@ -195,6 +195,13 @@ create_book_path(gchar *isbn, gchar *title)
   return path;
 }
 
+gint
+compare_books(const void * book_01, const void * book_02)
+{
+  return strcmp(((struct Book *) book_01)->title,
+                ((struct Book *) book_02)->title);
+}
+
 static void
 print_book(void)
 {

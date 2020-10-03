@@ -47,6 +47,8 @@ static struct Book * select_book_file(gchar *);
 static void free_book(void);
 gchar * create_book_path(gchar *, gchar *);
 
+gint compare_books(const void *, const void *);
+
 static void print_book(void);
 
 #endif
