@@ -154,4 +154,7 @@ update_book_list(gchar *title, gchar *path)
     books = g_list_append(books, book); // set first element
   else
     g_list_append(books, book);
+
+  /* sort list */
+  books = g_list_sort(books, compare_books);
 }
