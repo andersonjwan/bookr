@@ -139,11 +139,11 @@ format_log_add_time_minute(GtkEntry *entry,
   gint result = strtol(time, &end, 10);
 
   gchar formatted[3];
-  if(result >= 1 && result < 60) {
+  if(result >= 0 && result < 60) {
     sprintf(formatted, "%02d", result);
   }
   else {
-    sprintf(formatted, "01");
+    sprintf(formatted, "00");
   }
 
   /* set update */
