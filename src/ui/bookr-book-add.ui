@@ -354,6 +354,7 @@
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
                     <property name="secondary_icon_name">accessories-dictionary-symbolic</property>
+                    <signal name="icon-press" handler="show_book_selector" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
