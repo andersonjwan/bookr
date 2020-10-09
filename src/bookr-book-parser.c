@@ -471,7 +471,7 @@ parse_book_log_note(void)
   expect_key("NOTE");
 
   gchar *token;
-  token = get_value(";");
+  token = get_value(NULL);
 
   return token;
 }
