@@ -35,7 +35,7 @@ create_book(GtkWidget *container)
   new = (struct Book *) malloc(sizeof(struct Book));
 
   int i = 0;
-  const gchar *data[11];
+  const gchar *data[12];
   GtkEntry    *entry;
 
   GList *child;
@@ -87,6 +87,11 @@ create_book(GtkWidget *container)
   size = strlen(data[10]) + 1;
   new->calendar = (gchar *) malloc(sizeof(gchar) * size);
   strncpy(new->calendar, data[10], size);
+
+  size = strlen("file://") + strlen(data[11]) + 1;
+  new->book = (gchar *) malloc(sizeof(gchar) * size);
+  strncpy(new->book, "file://", strlen("file://"));
+  strncat(new->book, data[11], strlen(data[11]) + 1);
 
   new->log = NULL;
   new->path = create_book_path(new->isbn, new->title);
@@ -218,7 +223,7 @@ print_book(void)
 
     printf("Cover: %s\n", active->cover);
     printf("Calendar: %s\n", active->calendar);
-    printf("Document: %s\n", active->document);
+    printf("Book: %s\n", active->book);
     printf("Log: %p\n", active->log);
     printf("Path: %s\n", active->path);
   }
@@ -230,10 +235,13 @@ void
 open_book(GtkWidget *image,
           gpointer   data)
 {
-  GtkWidget *parent;
-  parent = GTK_WIDGET(data);
+  if(active->book) {
+    GtkWidget *parent;
+    parent = get_widget(get_builder_builder(), "bookr-main-window");
 
-  GError *error = NULL;
-  gtk_show_uri_on_window(GTK_WINDOW(parent),
-                         book->file, GDK_CURRENT_TIME, &error);
+    GError *error = NULL;
+    gtk_show_uri_on_window(GTK_WINDOW(parent),
+                           active->book,
+                           GDK_CURRENT_TIME, &error);
+  }
 }
