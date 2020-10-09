@@ -218,9 +218,22 @@ print_book(void)
 
     printf("Cover: %s\n", active->cover);
     printf("Calendar: %s\n", active->calendar);
+    printf("Document: %s\n", active->document);
     printf("Log: %p\n", active->log);
     printf("Path: %s\n", active->path);
   }
 
   return;
+}
+
+void
+open_book(GtkWidget *image,
+          gpointer   data)
+{
+  GtkWidget *parent;
+  parent = GTK_WIDGET(data);
+
+  GError *error = NULL;
+  gtk_show_uri_on_window(GTK_WINDOW(parent),
+                         book->file, GDK_CURRENT_TIME, &error);
 }
