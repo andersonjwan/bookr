@@ -188,6 +188,19 @@
                     <property name="position">10</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkLabel" id="bookr-book-edit-labels-label-book">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Book</property>
+                    <property name="xalign">1</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">11</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -333,6 +346,19 @@
                     <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">10</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="bookr-book-edit-entries-entry-book">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="secondary_icon_name">accessories-dictionary-symbolic</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">11</property>
                   </packing>
                 </child>
               </object>
