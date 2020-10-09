@@ -99,6 +99,11 @@ parse_book_information(void)
   strcpy(new->calendar, data);
   g_free(data);
 
+  data = parse_book_book();
+  new->book = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
+  strcpy(new->book, data);
+  g_free(data);
+
   data = parse_book_path();
   new->path = (gchar *) malloc(sizeof(gchar) * strlen(data) + 1);
   strcpy(new->path, data);
@@ -225,6 +230,17 @@ static gchar *
 parse_book_calendar(void)
 {
   expect_key("ICALPATH");
+
+  gchar *token;
+  token = get_value(NULL);
+
+  return token;
+}
+
+static gchar *
+parse_book_book(void)
+{
+  expect_key("BOOKPATH");
 
   gchar *token;
   token = get_value(NULL);

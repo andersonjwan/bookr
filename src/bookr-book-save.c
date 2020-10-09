@@ -45,6 +45,7 @@ write_book_information(void)
   fprintf(file, "PRINT:%05d\n",     active->pages);
   fprintf(file, "COVERPATH:%s\n",   active->cover);
   fprintf(file, "ICALPATH:%s\n",    active->calendar);
+  fprintf(file, "BOOKPATH:%s\n",    active->book);
   fprintf(file, "FILEPATH:%s\n",    active->path);
   fprintf(file, "LOGSCOUNT:%05d\n", active->count);
 }

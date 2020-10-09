@@ -21,6 +21,7 @@ static gchar * parse_book_start_page(void);
 static gchar * parse_book_print(void);
 static gchar * parse_book_cover(void);
 static gchar * parse_book_calendar(void);
+static gchar * parse_book_book(void);
 static gchar * parse_book_path(void);
 static gchar * parse_book_count(void);
 
