@@ -39,5 +39,5 @@ get_book_selector(GtkButton *button,
   file = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(selector));
   gtk_entry_set_text(GTK_ENTRY(entry), file);
 
-  hide_cover_selector(button, data);
+  hide_book_selector(button, data);
 }

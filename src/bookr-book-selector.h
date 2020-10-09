@@ -7,3 +7,5 @@
 void show_book_selector(GtkEntry  *, gpointer);
 void hide_book_selector(GtkButton *, gpointer);
 void get_book_selector(GtkButton  *, gpointer);
+
+#endif
