@@ -232,12 +232,13 @@ print_book(void)
 }
 
 void
-open_book(GtkWidget *image,
-          gpointer   data)
+open_book(GtkWidget      *image,
+          GdkEventButton *event,
+          gpointer        data)
 {
   if(active->book) {
     GtkWidget *parent;
-    parent = get_widget(get_builder_builder(), "bookr-main-window");
+    parent = GTK_WIDGET(data);
 
     GError *error = NULL;
     gtk_show_uri_on_window(GTK_WINDOW(parent),

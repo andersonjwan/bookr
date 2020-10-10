@@ -51,5 +51,5 @@ gchar * create_book_path(gchar *, gchar *);
 gint compare_books(const void *, const void *);
 
 static void print_book(void);
-void open_book(GtkWidget *, gpointer);
+void open_book(GtkWidget *, GdkEventButton *, gpointer);
 #endif
