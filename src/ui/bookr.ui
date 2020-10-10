@@ -207,7 +207,7 @@ show up here</property>
                                 <property name="valign">start</property>
                                 <property name="label_xalign">0</property>
                                 <child>
-                                  <object class="GtkEventBox">
+                                  <object class="GtkEventBox" id="bookr-main-stack-books-info-cover-event-box">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="events">GDK_BUTTON_PRESS_MASK</property>
