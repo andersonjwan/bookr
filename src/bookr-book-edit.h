@@ -7,6 +7,6 @@
 void show_book_edit(void);
 void hide_book_edit(GtkButton *, gpointer);
 
-static void clear_book_edit(void);
+void clear_book_edit(void);
 
 #endif

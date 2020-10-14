@@ -7,6 +7,6 @@
 void show_book_add(void);
 void hide_book_add(GtkButton *, gpointer);
 
-static void clear_book_add(void);
+void clear_book_add(void);
 
 #endif

@@ -25,7 +25,7 @@ hide_book_add(GtkButton *button,
   clear_book_add();
 }
 
-static void
+void
 clear_book_add(void)
 {
   GtkWidget *container;

@@ -27,7 +27,7 @@ hide_book_edit(GtkButton *button,
   clear_book_edit();
 }
 
-static void
+void
 clear_book_edit(void)
 {
   GtkWidget *container;
