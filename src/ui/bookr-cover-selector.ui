@@ -14,7 +14,7 @@
     <property name="can_focus">False</property>
     <property name="modal">True</property>
     <property name="type_hint">normal</property>
-    <signal name="close" handler="hide_cover_selector" swapped="no"/>
+    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="can_focus">False</property>
