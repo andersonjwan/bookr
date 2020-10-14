@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Bookr
+Comment=Track your reading activity.
+Icon=com.github.andersonjwan.bookr
+Exec=bookr
+Terminal=false
+Categories=Office;GNOME;GTK;
+Keywords=books;logs;reading;activity;tracker;
+StartupNotify=true
+StartupWMClass=Bookr
