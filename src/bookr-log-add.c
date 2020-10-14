@@ -35,7 +35,7 @@ hide_log_add(GtkButton *button,
   clear_log_add();
 }
 
-static void
+void
 clear_log_add(void)
 {
   GtkWidget *widget;
@@ -110,42 +110,46 @@ void
 format_log_add_time_hour(GtkEntry *entry,
                          gpointer  data)
 {
-  const gchar *time;
-  time = gtk_entry_get_text(GTK_ENTRY(entry));
+  if(gtk_widget_is_visible(GTK_WIDGET(dialog))) {
+    const gchar *time;
+    time = gtk_entry_get_text(GTK_ENTRY(entry));
 
-  gchar *end;
-  gint result = strtol(time, &end, 10);
+    gchar *end;
+    gint result = strtol(time, &end, 10);
 
-  gchar formatted[3];
-  if(result >= 1 && result <= 12) {
-    sprintf(formatted, "%02d", result);
+    gchar formatted[3];
+    if(result >= 1 && result <= 12) {
+      sprintf(formatted, "%02d", result);
+    }
+    else {
+      sprintf(formatted, "01");
+    }
+
+    /* set update */
+    gtk_entry_set_text(GTK_ENTRY(entry), formatted);
   }
-  else {
-    sprintf(formatted, "01");
-  }
-
-  /* set update */
-  gtk_entry_set_text(GTK_ENTRY(entry), formatted);
 }
 
 void
 format_log_add_time_minute(GtkEntry *entry,
                            gpointer  data)
 {
-  const gchar *time;
-  time = gtk_entry_get_text(GTK_ENTRY(entry));
+  if(gtk_widget_is_visible(GTK_WIDGET(dialog))) {
+    const gchar *time;
+    time = gtk_entry_get_text(GTK_ENTRY(entry));
 
-  gchar *end;
-  gint result = strtol(time, &end, 10);
+    gchar *end;
+    gint result = strtol(time, &end, 10);
 
-  gchar formatted[3];
-  if(result >= 0 && result < 60) {
-    sprintf(formatted, "%02d", result);
+    gchar formatted[3];
+    if(result >= 0 && result < 60) {
+      sprintf(formatted, "%02d", result);
+    }
+    else {
+      sprintf(formatted, "00");
+    }
+
+    /* set update */
+    gtk_entry_set_text(GTK_ENTRY(entry), formatted);
   }
-  else {
-    sprintf(formatted, "00");
-  }
-
-  /* set update */
-  gtk_entry_set_text(GTK_ENTRY(entry), formatted);
 }

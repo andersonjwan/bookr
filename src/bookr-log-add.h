@@ -9,7 +9,7 @@ GtkBuilder * get_log_add_builder(void);
 void show_log_add(void);
 void hide_log_add(GtkButton *, gpointer);
 
-static void clear_log_add(void);
+void clear_log_add(void);
 
 static void autofill_log_add(void);
 static void autofill_log_add_calendar(void);
