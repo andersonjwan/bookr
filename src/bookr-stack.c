@@ -307,10 +307,17 @@ update_book_stack_log_list_build_item_tooltip(GtkWidget *box, struct Log *log)
   gchar tooltip[size];
   sprintf(tooltip, "<b>Log #%d</b>\n", log->number);
 
-  gchar datetime[strlen("##/##/####, ##:## - ##:##\n") + 1];
-  sprintf(datetime, "%02d/%02d/%02d, %02d:%02d - %02d:%02d\n",
+  gchar datetime[strlen("##/##/####, ##:## ## - ##:## ##\n") + 1];
+
+  gchar starttime[strlen("##:## ##") + 1];
+  convert_time_format(starttime, log->start_hr, log->start_min);
+
+  gchar endtime[strlen("##:## ##") + 1];
+  convert_time_format(endtime, log->end_hr, log->end_min);
+
+  sprintf(datetime, "%02d/%02d/%02d, %s - %s\n",
           log->month, log->day, log->year,
-          log->start_hr, log->start_min, log->end_hr, log->end_min);
+          starttime, endtime);
   strcat(tooltip, datetime);
 
   gchar pages[strlen("Pages: ##### - #####") + 1];
