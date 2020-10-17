@@ -63,7 +63,7 @@ update_book_stack(struct Book *book)
   if(!book->log)
     gtk_paned_set_position(GTK_PANED(paned), 0);
   else
-    gtk_paned_set_position(GTK_PANED(paned), 250);
+    gtk_paned_set_position(GTK_PANED(paned), 275);
 }
 
 static void
