@@ -276,12 +276,9 @@ update_book_stack_log_list_build_item_content(struct Log *log)
   PangoAttrList *content_attr;
   content_attr = pango_attr_list_new();
 
-  PangoAttribute *attr_01, *attr_02;
+  PangoAttribute *attr_01;
   attr_01 = pango_attr_scale_new(0.75);
-  attr_02 = pango_attr_style_new(PANGO_STYLE_ITALIC);
-
   pango_attr_list_insert(content_attr, attr_01);
-  pango_attr_list_insert(content_attr, attr_02);
 
   gtk_label_set_attributes(GTK_LABEL(label), content_attr);
 
