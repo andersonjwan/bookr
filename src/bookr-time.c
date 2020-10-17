@@ -22,6 +22,28 @@ convert_time(guint hour, const gchar *label)
 }
 
 void
+convert_time_format(gchar *format_str, guint hour, guint minute)
+{
+  switch(hour) {
+  case 0:
+    hour = 12;
+    sprintf(format_str, "%02d:%02d AM", hour, minute);
+    break;
+  default: {
+    if(hour > 12) {
+      sprintf(format_str, "%02d:%02d PM", hour - 12, minute);
+    }
+    else if(hour == 12){
+      sprintf(format_str, "%02d:%02d AM", hour, minute);
+    }
+    else {
+      sprintf(format_str, "%02d:%02d PM", hour, minute);
+    }
+  }
+  }
+}
+
+void
 get_current_date(guint *day, guint *month, guint *year)
 {
   time_t rawtime;

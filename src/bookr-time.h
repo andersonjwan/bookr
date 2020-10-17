@@ -9,6 +9,7 @@
 struct Log;
 
 guint convert_time(guint, const gchar *);
+void convert_time_format(gchar *, guint, guint);
 
 void get_current_date(guint *, guint *, guint *);
 
